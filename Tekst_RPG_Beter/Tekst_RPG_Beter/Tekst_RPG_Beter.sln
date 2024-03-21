@@ -1,0 +1,14 @@
+﻿using System;
+
+public class Rooms
+{
+	public StartRoom()
+	{
+
+	}
+
+	public RandomRooms()
+	{ 
+	
+	}
+}
