@@ -7,7 +7,6 @@ public static class Combat
     public static int Give_XP { get; set; }
     public static int SkillCD { get; set; }
 
-
     static Random random = new Random();
 
     public static Entity Enemy;
@@ -27,43 +26,48 @@ public static class Combat
 
 
     CombatLoop:
-        if (isPlayerTurn)
+        if (isPlayerTurn == true)
         {
             Console.Clear();
             ShowCombatStat();
             Program.Selector("Attack", "Guard", "Use Skill", 0, typeof(Combat));
-            isPlayerTurn = false;
-            Program.menu = isPlayerTurn;
+
         }
-        else // dit zijn de dingen die de enemy kan doen
+        if (isPlayerTurn == false) // dit zijn de dingen die de enemy kan doen
         {
             select = random.Next(1, 4);
             switch (select)
             {
                 case 1:
-
+                    Console.WriteLine($"{Enemy.Name} valt aan");
                     Player.Health -= random.Next(Enemy.Damage, Enemy.Damage * 2);
                     isPlayerTurn = true;
                     Program.menu = isPlayerTurn;
+                break;
 
-                    break;
                 case 2:
+                    Console.WriteLine($"{Enemy.Name} verdedigd zichzelf");
+                    Enemy.Health += Enemy.maxHealth / 4;
 
+                    Thread.Sleep(700);
+
+                    ShowCombatStat();
                     isPlayerTurn = true;
                     Program.menu = isPlayerTurn;
-                    break;
-                case 3:
-                    UseSkill(Player,Enemy);
-                    Program.menu = isPlayerTurn;
+                break;
 
-                    break;
+                case 3:
+                    Console.WriteLine($"{Enemy.Name} gebruikt zijn {Enemy.Klass} skill");
+                    UseSkill(Enemy,Player);
+                    Program.menu = isPlayerTurn;
+                break;
 
                 default:
                     Console.WriteLine("In de enemy combat ging iets fout");
 
                     isPlayerTurn = true;
                     Program.menu = isPlayerTurn;
-                    break;
+                break;
             }
         }
 
@@ -81,6 +85,7 @@ public static class Combat
             Program.menu = false;
             Console.Clear();
             Console.WriteLine($"{Enemy.Name} was deafeated!");
+            opponent.Remove(Enemy);
             Console.ReadLine();
         }
         if (Enemy.Health > 0 || Player.Health > 0)
@@ -104,20 +109,22 @@ public static class Combat
 
                 target.Health -= random.Next(user.Damage, user.Damage * 2);
                 ShowCombatStat();
-                break;
+                isPlayerTurn = !isPlayerTurn;
+                Program.menu = isPlayerTurn;
+            break;
 
             case "Samurai":
-                // Dodge de volgende attack en counter
+                // geeft 50% van je maximum health terug
+                user.Health += user.maxHealth / 2;
 
-                // if attackdetected
-                target.Health -= random.Next(user.Damage, user.Damage * 2);
                 ShowCombatStat();
 
-                isPlayerTurn = true;
+                isPlayerTurn = !isPlayerTurn;
                 Program.menu = isPlayerTurn;
-                break;
+            break;
 
          
+
             case "Fighter":
                 // Reflecteer de enemy skill als die gebruikt wordt
                 if (target.UsedSkill)
@@ -127,13 +134,15 @@ public static class Combat
                     case "Gunslinger":
                         target.Health -= random.Next(target.Damage, target.Damage * 2);
                         ShowCombatStat();
+
+                        Thread.Sleep(700);
+
                         target.Health -= random.Next(target.Damage, target.Damage * 2);
                         ShowCombatStat();
                         break;
 
                     case "Samurai":
-                        target.Health -= random.Next(target.Damage, target.Damage * 2);
-                        isPlayerTurn = true;
+                        target.Health -= target.maxHealth / 2; // invert de samurai skill en doet de helft damage op de gebruiker
                         ShowCombatStat();
                         break;
 
@@ -144,9 +153,10 @@ public static class Combat
 
                     default:
                         ShowCombatStat();
-                        isPlayerTurn = false;
                         break;
                     }
+                    isPlayerTurn = !isPlayerTurn;
+                    Program.menu = isPlayerTurn;
 
                 }
                 break;
@@ -157,21 +167,18 @@ public static class Combat
     {
         Enemy.Health -= random.Next(Player.Damage, Player.Damage * 2);
         ShowCombatStat();
+        isPlayerTurn = false;
+        Program.menu = isPlayerTurn;
         
     }
 
     public static void Guard()
     {
-        if (isPlayerTurn)
-        {
-          Player.Health += Player.maxHealth / 4;
-          //de speler krijgt meer health per guard, dit is zodat de enemy niet sneller keer kan healen dan de speler
-        } 
-        else 
-        {
-          Enemy.Health += Enemy.maxHealth / 6; 
-        }
-        ShowCombatStat();
+       Player.Health += Player.maxHealth / 4;
+       //de speler krijgt meer health per guard, dit is zodat de enemy niet sneller keer kan healen dan de speler
+       ShowCombatStat();
+       isPlayerTurn = false;
+       Program.menu = isPlayerTurn;
     }
 
     /// <summary>

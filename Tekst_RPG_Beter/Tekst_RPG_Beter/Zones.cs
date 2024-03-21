@@ -10,9 +10,9 @@
     public static List<Entity> ForestPeople = new List<Entity>();
 
     public static List<Entity> StartEnemies = new List<Entity>() 
-    {  new Entity("Fighter", "Mens", 70, 20, 0, "Surprised Guard"),
-       new Entity("Fighter", "Mens", 40, 10, 0, "Stupid Guard"),
-       new Entity("Fighter", "Mens", 60, 10, 0, "Clumsy Guard")    };
+    {  new Entity("Gunslinger", "Mens", 70, 20, 0, "Surprised Guard"),
+       new Entity("Gunslinger", "Mens", 40, 20, 0, "Stupid Guard"),
+       new Entity("Gunslinger", "Mens", 60, 20, 0, "Clumsy Guard")    };
     static Zones() 
     {
         //eerste zone
