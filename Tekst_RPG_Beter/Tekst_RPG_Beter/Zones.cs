@@ -16,7 +16,7 @@
     static Zones() 
     {
         //eerste zone
-        PrisonPeople.Add(new Entity("Fighter", "Orc", 100, 15, 0, "Spooked Guard")); //1
+        PrisonPeople.Add(new Entity("Fighter", "Orc", 100, 15, 0, "Spooked Guard")); //1F
         PrisonPeople.Add(new Entity("Samurai", "Elf", 70, 30, 0, "Elf Guard")); // 2
         PrisonPeople.Add(new Entity("Fighter", "Orc", 120, 10, 0, "Orc Guard")); // 3
         PrisonPeople.Add(new Entity("Gunslinger", "Mens", 30, 40, 0, "Watchtower Guard")); // 4

@@ -25,7 +25,7 @@ public class Entity
 		set 
 		{
 			usedSkill = false;
-			if (!ReferenceEquals(this, Program.Player))
+			if (!ReferenceEquals(this, PlayerChoices.Player))
 			{ 
 			  usedSkill = true; //ik wil niet dat enemies op beurt 1 een skill kunnen gebruiken
 			}
@@ -74,50 +74,50 @@ public class Entity
 
 	public void EncounterTriggered()
 	{
-		Program.Player.UsedSkill = false;
+		PlayerChoices.Player.UsedSkill = false;
 	}
 
 
 
 	public static void Gunslinger()
 	{
-		Program.Player.Klass = "Gunslinger";
-		Program.menu = false;
+		PlayerChoices.Player.Klass = "Gunslinger";
+	//	Program.menu = false;
     }
 
 	public static void Samurai()
 	{ 
-		Program.Player.Klass = "Samurai";
-        Program.menu = false;
+		PlayerChoices.Player.Klass = "Samurai";
+        PlayerChoices.menu = false;
 
 
     }
 
     public static void Fighter()
 	{ 
-		Program.Player.Klass = "Fighter";
-        Program.menu = false;
+		PlayerChoices.Player.Klass = "Fighter";
+        PlayerChoices.menu = false;
     }
 
 
     public static void Mens()
     {
-		Program.Player.Race = "Mens";
-        Program.menu = false;
+		PlayerChoices.Player.Race = "Mens";
+        PlayerChoices.menu = false;
 
     }
 
     public static void Elf()
 	{
-		Program.Player.Race = "Elf";
-        Program.menu = false;
+		PlayerChoices.Player.Race = "Elf";
+        PlayerChoices.menu = false;
 
     }
 
     public static void Orc()
     {
-        Program.Player.Race = "Orc";
-        Program.menu = false;
+        PlayerChoices.Player.Race = "Orc";
+        PlayerChoices.menu = false;
 
     }
 
