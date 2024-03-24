@@ -90,21 +90,29 @@ public static class PlayerChoices
                 switch (trueSelected)// invoked de method op basis van welke string geselecteerd is
                 {
                     case (0):
+                        if (function1 == "Attack")
+                        { 
+                          method1.Invoke(null, new object[] {Player, Combat.Enemy});
+                        }
+                        else
                         method1.Invoke(null, null);
                         break;
                     case (1):
+                        if (function2 == "Guard")
+                        {
+                            method2.Invoke(null, new object[] { Player });
+                        }
+                        else
                         method2.Invoke(null, null);
                         break;
                     case (2):
                         if (function3 == "UseSkill")
                         {
-                            method3.Invoke(null, new object[] { Player, Combat.Enemy });
+                            method3.Invoke(null, new object[] {Player, Combat.Enemy});
                             // roept de functie met paramaters aan als het de use skill functie is
                         }
                         else
-                        {
-                            method3.Invoke(null, null);
-                        }
+                        method3.Invoke(null, null);
                         break;
                 }
             }
@@ -141,7 +149,7 @@ public static class PlayerChoices
 
         Instelbaar.Print($"{Player.Name}. Tijdens een bank overval werdt je betrapt en nu zit je vast. \nNa maanden graven heb je een geheime gang net buiten je cel kunnen graven.\nJe besluit om:");
         Console.WriteLine();
-        Selector("De tunnel in te gaan", "Een sleutel te stelen", "Opnieuw te beginnen", 3, typeof(PlayerChoices));
+        Selector("De tunnel in te gaan", "Een sleutel proberen te stelen", "Opnieuw te beginnen", 3, typeof(PlayerChoices)); // eerste playerkeuze
 
 
         Console.ReadLine();
@@ -158,26 +166,29 @@ public static class PlayerChoices
     }
 
 
-    //----------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    public static void Detunnelintegaan()// eerste playerChoice
+    public static void Detunnelintegaan()// eerste player keuze
     {
         Console.Clear();
         Instelbaar.Print("Je besluit de tunnel in te gaan en komt nu midden in de gang uit. Een bewaker ziet je staan en komt op je af.");
         Combat.StartCombat(Zones.StartEnemies);
     }
 
-    public static void Eensleuteltestelen()// eerste playerChoice
+    public static void Eensleutelproberentestelen()// eerste player keuze
     {
         Console.Clear();
         Instelbaar.Print("Je komt voorzichtig dicht bij de cel bewaker en pakt door de tralies heen zijn sleutelbos van zijn riem af. \n Je gebruikt de sleutels om de deur te openen en de bewaker te verassen");
         Combat.StartCombat(Zones.StartEnemies);
     }
 
-    public static void Opnieuwtebeginnen()// eerste playerChoice
+    public static void Opnieuwtebeginnen()// eerste player keuze
     {
         Console.Clear();
         Start();
     }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

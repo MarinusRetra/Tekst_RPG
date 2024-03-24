@@ -15,8 +15,10 @@ public class Entity
 	public int CritChance { get; set; }
 	public string Race { get; set; }
 	public string Klass { get; set; }
+    public static int SkillCD { get; set; }
 
-	public bool UsedSkill 
+
+    public bool UsedSkill 
 	{ 
 		get 
 		{
@@ -72,25 +74,23 @@ public class Entity
 
 
 
-	public void EncounterTriggered()
-	{
-		PlayerChoices.Player.UsedSkill = false;
-	}
+	//public void EncounterTriggered()
+	//{
+	//	PlayerChoices.Player.UsedSkill = false;
+	//}
 
 
 
 	public static void Gunslinger()
 	{
 		PlayerChoices.Player.Klass = "Gunslinger";
-	//	Program.menu = false;
+		PlayerChoices.menu = false;
     }
 
 	public static void Samurai()
 	{ 
 		PlayerChoices.Player.Klass = "Samurai";
         PlayerChoices.menu = false;
-
-
     }
 
     public static void Fighter()
