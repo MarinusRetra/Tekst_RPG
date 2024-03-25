@@ -15,7 +15,7 @@ public class Entity
 	public int CritChance { get; set; }
 	public string Race { get; set; }
 	public string Klass { get; set; }
-    public static int SkillCD { get; set; }
+	public int SkillCD { get; set; }
 
 
     public bool UsedSkill 
@@ -68,6 +68,7 @@ public class Entity
 		maxHealth = Health;
 		Damage = damageIn + (levelBooster[1] * Level);
 		XP = 0;
+		SkillCD = 0;
 	}
 
 

@@ -38,6 +38,11 @@ public static class Combat
         if (isPlayerTurn == false && Enemy.Health > 0)
         {
             select = random.Next(1, 4);
+            if(Enemy.SkillCD == 0)
+            {
+                select = 3;
+            }
+            
             switch (select)
             {
                 case 1:
@@ -46,7 +51,6 @@ public static class Combat
 
                 case 2:
                     Guard(Enemy);
-                    ShowCombatStat();
                 break;
 
                 case 3:
@@ -57,6 +61,7 @@ public static class Combat
                     ShowCombatStat();
                 throw new Exception("Er gaat iets fout in combat");
             }
+            Enemy.SkillCD--;
         }
 //--------------------------------------------Enemy actions ^^
 
@@ -87,59 +92,73 @@ public static class Combat
 
     public static void UseSkill(Entity user, Entity target)
     {
-        Console.SetCursorPosition(0, 0);
-        Console.WriteLine($"{user.Name} gebruikt de {user.Klass} skill");
-        Thread.Sleep(700);
-
-        user.usedSkill = true;
-        switch (user.Klass)
+        if (user.SkillCD != 0)
         {
-            case "Gunslinger": // doe twee attacks in 1 beurt
-                Attack(user, target);
-                Thread.Sleep(700);
-                Attack(user, target);
-                ShowCombatStat();
-            break;
-
-            case "Samurai":// geeft 50% van je maximum health terug en je valt aan
-                user.Health += user.maxHealth / 2;
-                Attack(user, target);
-            break;
-
-
-            case "Fighter": // Reflecteer de enemy skill als die gebruikt wordt
-                if (target.UsedSkill)
-                {
-                    switch (target.Klass) //pakt de enemy klass gebruikt de skill op de enemy met de enemy stats
-                    {
-                    case "Gunslinger":
-                        Attack(target, target);
-                        Thread.Sleep(700);
-                        Attack(target, target);
-                        break;
-
-                    case "Samurai":
-                        target.Health -= target.maxHealth / 2; //invert de samurai skill en doet de helft damage op de gebruiker
-                        ShowCombatStat();
-                        break;
-
-                    case "Fighter": 
-                        ShowCombatStat();
-                        break;
-
-                    default:
-                        ShowCombatStat();
-                        break;
-                    }
-                }
-                break;
+            //stop de functie als SkillCD niet null is en ga terug naar het menu
+            Console.WriteLine("Je skill is op cooldown");
+            Console.SetCursorPosition(0, 2);
+        }
+         else
+         { 
+          Console.SetCursorPosition(0, 7);
+          Console.WriteLine($"{user.Name} gebruikt de {user.Klass} skill");
+          Thread.Sleep(700);
+          
+          user.usedSkill = true;
+          switch (user.Klass)
+          {
+              case "Gunslinger": // doe twee attacks in 1 beurt
+                  Attack(user, target);
+                  Thread.Sleep(700);
+                  Attack(user, target);
+                  ShowCombatStat();
+                  user.SkillCD = 3;
+              break;
+          
+              case "Samurai":// geeft 50% van je maximum health terug en je valt aan
+                  user.Health += user.maxHealth / 2;
+                  Attack(user, target);
+                  user.SkillCD = 4;
+                  break;
+          
+          
+              case "Fighter": // Reflecteer de enemy skill als die gebruikt wordt
+                  if (target.UsedSkill)
+                  {
+                      switch (target.Klass) //pakt de enemy klass gebruikt de skill op de enemy met de enemy stats
+                      {
+                      case "Gunslinger":
+                          Attack(target, target);
+                          Thread.Sleep(700);
+                          Attack(target, target);
+                          break;
+          
+                      case "Samurai":
+                          target.Health -= target.maxHealth / 2; //invert de samurai skill en doet de helft damage op de gebruiker
+                          ShowCombatStat();
+                          break;
+          
+                      case "Fighter": 
+                          ShowCombatStat();
+                          break;
+          
+                      default:
+                          Console.WriteLine("Reflectie van skill vaalt");
+                          ShowCombatStat();
+                          user.SkillCD = 2;
+                          break;
+                      }
+                  }
+                  break;
+          }
         }
     }
 
     public static void Attack(Entity user = null, Entity target = null)
     {
+        Console.SetCursorPosition(0, 7);
         Console.WriteLine($"{user.Name} valt aan");
-        Thread.Sleep(700);
+        Thread.Sleep(1000);
         if (target == null || user == null)
         {
             Enemy.Health -= random.Next(Player.Damage, Player.Damage * 2);
@@ -153,6 +172,7 @@ public static class Combat
 
     public static void Guard(Entity user)
     {
+        Console.SetCursorPosition(0, 7);
         Console.WriteLine($"{user.Name} verdedigd");
         Thread.Sleep(1000);
         if (ReferenceEquals(Player, user))
@@ -174,7 +194,7 @@ public static class Combat
     { 
         Console.SetCursorPosition(0, 4);
         Console.WriteLine($"{Enemy.Name} : Health {Enemy.Health}");
-        Console.WriteLine($"{Player.Name} : Health {Player.Health}");
+        Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.SkillCD}");
         Console.SetCursorPosition(0, 0);
         if (swapTurn)
         {

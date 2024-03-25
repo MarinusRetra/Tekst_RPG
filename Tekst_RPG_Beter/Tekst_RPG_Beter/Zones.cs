@@ -39,11 +39,6 @@
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 200, 60, 5, "Advanced Elf Archer")); // 8
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 200, 60, 5, "Advanced Elf Archer")); // 9
         ForestPeople.Add(new Entity("Gunslinger", "Mens", 400, 50, 5, "Wandering Samurai")); // 10
-
-
-
-
-
     }
 
 }
