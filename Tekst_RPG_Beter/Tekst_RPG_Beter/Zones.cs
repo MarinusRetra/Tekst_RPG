@@ -9,12 +9,15 @@
 
     public static List<Entity> ForestPeople = new List<Entity>();
 
-    public static List<Entity> StartEnemies = new List<Entity>() 
-    {  new Entity("Gunslinger", "Mens", 700, 20, 0, "Surprised Guard"),
-       new Entity("Gunslinger", "Mens", 400, 20, 0, "Stupid Guard"),
-       new Entity("Gunslinger", "Mens", 600, 20, 0, "Clumsy Guard")    };
+    public static List<Entity> StartEnemies = new List<Entity>();
     static Zones() 
     {
+
+        //enemies eerste encounter
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 70, 20, 0, "Surprised Guard"));
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 0, "Stupid Guard"));
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 60, 20, 0, "Clumsy Guard")) ;
+
         //eerste zone
         PrisonPeople.Add(new Entity("Fighter", "Orc", 100, 15, 0, "Spooked Guard")); //1F
         PrisonPeople.Add(new Entity("Samurai", "Elf", 70, 30, 0, "Elf Guard")); // 2
@@ -27,7 +30,6 @@
         PrisonPeople.Add(new Entity("Gunslinger", "Elf", 70, 30, 0, "Elf Guard")); // 9
         PrisonPeople.Add(new Entity("Fighter", "Orc", 250, 30, 0, "Warden")); // 10
 
-
         //tweede zone
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 120, 40, 5, "Elf Archer")); // 1
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 120, 40, 5, "Elf Archer")); // 2
@@ -39,6 +41,23 @@
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 200, 60, 5, "Advanced Elf Archer")); // 8
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 200, 60, 5, "Advanced Elf Archer")); // 9
         ForestPeople.Add(new Entity("Gunslinger", "Mens", 400, 50, 5, "Wandering Samurai")); // 10
+
+        foreach (Entity entity in ForestPeople)
+        {
+            entity.Damage += entity.Health * Instelbaar.Difficulty;
+            entity.Health += entity.Health * Instelbaar.Difficulty;
+        }
+        foreach (Entity entity in PrisonPeople)
+        {
+            entity.Damage += entity.Health * Instelbaar.Difficulty;
+            entity.Health += entity.Health * Instelbaar.Difficulty;
+        }
+        foreach (Entity entity in StartEnemies)
+        {
+            entity.Damage += entity.Health * Instelbaar.Difficulty;
+            entity.Health += entity.Health * Instelbaar.Difficulty;
+        }
+        
     }
 
 }

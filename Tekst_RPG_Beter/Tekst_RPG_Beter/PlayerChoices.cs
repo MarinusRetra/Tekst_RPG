@@ -18,9 +18,9 @@ public static class PlayerChoices
     /// <param name="insertType"> Een reference naar de class waarvan je de functies wilt gebruiken: typeof(Class naam)</param>
     public static void Selector(string function1, string function2, string function3, int cursorStart, Type insertType)
     {
-        Console.WriteLine(function1);
-        Console.WriteLine(function2);
-        Console.WriteLine(function3);
+        Instelbaar.Print(function1);
+        Instelbaar.Print(function2);
+        Instelbaar.Print(function3);
 
 
         // 25 tot 32 is voor het verwijderen van spaties tussen de woorden van de input
@@ -149,7 +149,7 @@ public static class PlayerChoices
 
         Instelbaar.Print($"{Player.Name}. Tijdens een bank overval werdt je betrapt en nu zit je vast. \nNa maanden graven heb je een geheime gang net buiten je cel kunnen graven.\nJe besluit om:");
         Console.WriteLine();
-        Selector("De tunnel in te gaan", "Een sleutel proberen te stelen", "Opnieuw te beginnen", 3, typeof(PlayerChoices)); // eerste playerkeuze
+        Selector("De tunnel in te gaan", "Een sleutel proberen te stelen", "Opnieuw te beginnen", 4, typeof(PlayerChoices)); // eerste playerkeuze
 
 
         Console.ReadLine();
@@ -157,7 +157,8 @@ public static class PlayerChoices
 
     public static void Options()//Startmenu keuze
     {
-        Console.WriteLine("Er is jammergenoeg nog niets om in te stellen");
+        Console.Clear();
+        Selector("SetTekstSpeed","SetDifficulty","SetTekstSpeed",0, typeof(Instelbaar));
     }
 
     public static void Quit()//Startmenu keuze

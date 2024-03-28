@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tekst_RPG_Beter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1bd02e7b984023a9dccd20ef762700ac639cfc3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82aa09c2541bc060e645dce6dbee0700a0877972")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tekst_RPG_Beter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tekst_RPG_Beter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
