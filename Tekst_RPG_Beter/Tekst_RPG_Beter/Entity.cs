@@ -4,9 +4,9 @@ using Tekst_RPG_Beter;
 
 public class Entity
 {
-	public bool usedSkill;
-
-	public int maxHealth;
+	public int skillCD;
+    public int maxHealth;
+	public bool Deflecting { get; set; }
 	public string Name { get; set; }
 	public int Health { get; set; }
 	public int Damage { get; set; }
@@ -15,22 +15,22 @@ public class Entity
 	public int CritChance { get; set; }
 	public string Race { get; set; }
 	public string Klass { get; set; }
-	public int SkillCD { get; set; }
 
 
-    public bool UsedSkill 
+    public int SkillCD 
 	{ 
 		get 
 		{
-			return usedSkill; 
+			return skillCD; 
 		}
 		set 
 		{
-			usedSkill = false;
 			if (!ReferenceEquals(this, PlayerChoices.Player))
 			{ 
-			  usedSkill = true; //ik wil niet dat enemies op beurt 1 een skill kunnen gebruiken
+			  skillCD = 3; //ik wil niet dat enemies op beurt 1 een skill kunnen gebruiken
 			}
+			else
+			skillCD = 0;
 		}
 	}
 
@@ -68,7 +68,7 @@ public class Entity
 		maxHealth = Health;
 		Damage = damageIn + (levelBooster[1] * Level);
 		XP = 0;
-		SkillCD = 0;
+		skillCD = SkillCD;
 	}
 
 

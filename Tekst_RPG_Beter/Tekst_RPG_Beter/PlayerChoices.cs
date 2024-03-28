@@ -92,7 +92,7 @@ public static class PlayerChoices
                     case (0):
                         if (function1 == "Attack")
                         { 
-                          method1.Invoke(null, new object[] {Player, Combat.Enemy});
+                          method1.Invoke(null, new object[] {Player, Combat.Enemy, false});
                         }
                         else
                         method1.Invoke(null, null);

@@ -27,9 +27,14 @@ public static class Combat
     CombatLoop:
         if (isPlayerTurn == true)
         {
+            Player.Deflecting = false;
             Console.Clear();
             ShowCombatStat(false);
             PlayerChoices.Selector("Attack", "Guard", "Use Skill", 0, typeof(Combat));
+            if (Player.skillCD > 0)
+            { 
+                Player.skillCD--;
+            }
 
         }
 
@@ -37,8 +42,11 @@ public static class Combat
 
         if (isPlayerTurn == false && Enemy.Health > 0)
         {
-            select = random.Next(1, 4);
-            if(Enemy.SkillCD == 0)
+            Enemy.Deflecting = false;
+
+            select = random.Next(1, 3); // welke actie de enemy gaat doen op zijn beurt attack of guard
+            
+            if(Enemy.skillCD == 0)// de enemy doet altijd zijn skill op het moment dat hij die krijgt
             {
                 select = 3;
             }
@@ -61,7 +69,11 @@ public static class Combat
                     ShowCombatStat();
                 throw new Exception("Er gaat iets fout in combat");
             }
-            Enemy.SkillCD--;
+
+            if (Enemy.skillCD > 0)
+            {
+              Enemy.skillCD--;
+            }
         }
 //--------------------------------------------Enemy actions ^^
 
@@ -89,10 +101,9 @@ public static class Combat
 //--------------------------------------------Bepaalt of combat doorgaat of stopt ^^^
     }
 
-
     public static void UseSkill(Entity user, Entity target)
     {
-        if (user.SkillCD != 0)
+        if (user.skillCD != 0 && isPlayerTurn)
         {
             //stop de functie als SkillCD niet null is en ga terug naar het menu
             Console.WriteLine("Je skill is op cooldown");
@@ -104,60 +115,72 @@ public static class Combat
           Console.WriteLine($"{user.Name} gebruikt de {user.Klass} skill");
           Thread.Sleep(700);
           
-          user.usedSkill = true;
-          switch (user.Klass)
-          {
-              case "Gunslinger": // doe twee attacks in 1 beurt
-                  Attack(user, target);
-                  Thread.Sleep(700);
-                  Attack(user, target);
-                  ShowCombatStat();
-                  user.SkillCD = 3;
-              break;
-          
-              case "Samurai":// geeft 50% van je maximum health terug en je valt aan
-                  user.Health += user.maxHealth / 2;
-                  Attack(user, target);
-                  user.SkillCD = 4;
-                  break;
-          
-          
-              case "Fighter": // Reflecteer de enemy skill als die gebruikt wordt
-                  if (target.UsedSkill)
-                  {
-                      switch (target.Klass) //pakt de enemy klass gebruikt de skill op de enemy met de enemy stats
-                      {
-                      case "Gunslinger":
-                          Attack(target, target);
-                          Thread.Sleep(700);
-                          Attack(target, target);
-                          break;
-          
-                      case "Samurai":
-                          target.Health -= target.maxHealth / 2; //invert de samurai skill en doet de helft damage op de gebruiker
-                          ShowCombatStat();
-                          break;
-          
-                      case "Fighter": 
-                          ShowCombatStat();
-                          break;
-          
-                      default:
-                          Console.WriteLine("Reflectie van skill vaalt");
-                          ShowCombatStat();
-                          user.SkillCD = 2;
-                          break;
-                      }
-                  }
-                  break;
-          }
-        }
+            if (!target.Deflecting)
+            {
+                switch (user.Klass)
+                {
+                    // doe twee attacks in 1 beurt
+                    case "Gunslinger": 
+                        Attack(user, target, false);
+                        Thread.Sleep(700);
+                        Attack(user, target, false);
+                        ShowCombatStat();
+                        user.skillCD = 3;
+                    break;
+
+                    // geeft 50% van je maximum health terug en je valt aan
+                    case "Samurai":
+                        user.Health += user.maxHealth / 2;
+                        Attack(user, target);
+                        user.skillCD = 4;
+                    break;
+
+                    // Reflecteer de enemy skill als die gebruikt wordt na jouw beurt
+                    case "Fighter": 
+                        user.Deflecting = true;
+                        ShowCombatStat();
+                        user.skillCD = 2;
+                    break;
+                }
+            }
+            else
+            {
+                // pakt de enemy klass gebruikt de skill op de enemy met de enemy stats
+                switch (user.Klass) 
+                {
+                    case "Gunslinger":
+                        Attack(user, user, false);
+                        Thread.Sleep(700);
+                        Attack(user, user, false);
+                        ShowCombatStat();
+                        user.skillCD = 3;
+                    break;
+
+                    case "Samurai":
+                        user.Health -= user.maxHealth / 2; 
+                        ShowCombatStat();
+                        user.skillCD = 4;
+                    break;
+
+                    case "Fighter":
+                        Console.WriteLine("Both of you are ready to counterattack eachother........no one moved");
+                        ShowCombatStat();
+                        user.skillCD = 2;
+                    break;
+
+                    default:
+                        Console.WriteLine("Reflectie van skill vaalt");
+                        ShowCombatStat();
+                    break;
+                }
+            }
+         }
     }
 
-    public static void Attack(Entity user = null, Entity target = null)
+    public static void Attack(Entity user = null, Entity target = null, bool printStuff = true)
     {
         Console.SetCursorPosition(0, 7);
-        Console.WriteLine($"{user.Name} valt aan");
+        Console.WriteLine(printStuff ? $"{user.Name} valt aan met zijn {user.Klass} moves" : "" );
         Thread.Sleep(1000);
         if (target == null || user == null)
         {
@@ -194,7 +217,7 @@ public static class Combat
     { 
         Console.SetCursorPosition(0, 4);
         Console.WriteLine($"{Enemy.Name} : Health {Enemy.Health}");
-        Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.SkillCD}");
+        Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.skillCD}");
         Console.SetCursorPosition(0, 0);
         if (swapTurn)
         {
