@@ -15,6 +15,7 @@ public class Entity
 	public int CritChance { get; set; }
 	public string Race { get; set; }
 	public string Klass { get; set; }
+	public string XP_To_Give { get; set; }
 
 
     public int SkillCD 
@@ -25,11 +26,6 @@ public class Entity
 		}
 		set 
 		{
-			if (!ReferenceEquals(this, PlayerChoices.Player))
-			{ 
-			  skillCD = 3; //ik wil niet dat enemies op beurt 1 een skill kunnen gebruiken
-			}
-			else
 			skillCD = 0;
 		}
 	}
@@ -45,16 +41,16 @@ public class Entity
 		switch (race)
 		{
 			case "Mens":
-				levelBooster = new List<int>() { 3, 3 }; // balanced
+				levelBooster = new List<int>() { 15, 5 }; // balanced
 				break;
 			case "Orc":
-				levelBooster = new List<int>() { 4, 2 }; // veel hp minder damage
+				levelBooster = new List<int>() { 20, 3 }; // veel hp minder damage
 				break;
 			case "Elf":
-				levelBooster = new List<int>() { 2, 4 }; // laag hp veel damage
+				levelBooster = new List<int>() { 10, 7 }; // laag hp veel damage
 				break;
 			default:
-				levelBooster = new List<int>() { 1, 1 }; 
+				levelBooster = new List<int>() { 10, 10 }; 
 				break;
 		}
 
@@ -68,18 +64,9 @@ public class Entity
 		maxHealth = Health;
 		Damage = damageIn + (levelBooster[1] * Level);
 		XP = 0;
+		XP_To_Give += Health + Damage * Level;
 		skillCD = SkillCD;
 	}
-
-
-
-
-
-	//public void EncounterTriggered()
-	//{
-	//	PlayerChoices.Player.UsedSkill = false;
-	//}
-
 
 
 	public static void Gunslinger()

@@ -103,17 +103,17 @@ public static class Combat
 
     public static void UseSkill(Entity user, Entity target)
     {
-        if (user.skillCD != 0 && isPlayerTurn)
-        {
-            //stop de functie als SkillCD niet null is en ga terug naar het menu
-            Console.WriteLine("Je skill is op cooldown");
-            Console.SetCursorPosition(0, 2);
-        }
-         else
-         { 
-          Console.SetCursorPosition(0, 7);
-          Console.WriteLine($"{user.Name} gebruikt de {user.Klass} skill");
-          Thread.Sleep(700);
+          if (user.skillCD != 0 && isPlayerTurn)
+          {
+             //stop de functie als SkillCD niet null is en ga terug naar het menu
+             Console.WriteLine("Je skill is op cooldown");
+             Console.SetCursorPosition(0, 2);
+          }
+          else
+          { 
+             Console.SetCursorPosition(0, 7);
+             Console.WriteLine($"{user.Name} gebruikt de {user.Klass} skill");
+             Thread.Sleep(700);
           
             if (!target.Deflecting)
             {

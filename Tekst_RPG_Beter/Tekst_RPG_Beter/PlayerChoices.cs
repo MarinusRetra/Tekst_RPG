@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Tekst_RPG_Beter;
 
 public static class PlayerChoices
@@ -64,7 +65,6 @@ public static class PlayerChoices
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
             }
 
-
             selected = Console.GetCursorPosition().Top;
             int trueSelected = selected - startPos;
             //true selected is een aangepaste versie van selected die ervoor
@@ -126,31 +126,29 @@ public static class PlayerChoices
     public static void Start()//Startmenu keuze 
     {
         Console.Clear();
-        Console.Write($"Dit is het verhaal van: ");
+        Instelbaar.Print($"Dit is het verhaal van: ",false);
         Player.Name = Console.ReadLine().ToString();
 
-        Console.WriteLine($"{Player.Name} is een ");
+        Instelbaar.Print($"{Player.Name} is een ");
         Console.WriteLine();
 
         Selector("Orc", "Elf", "Mens", 3, typeof(Entity));
 
-
         Console.Clear();
-        Console.WriteLine($"Natuurlijk is {Player.Name} {"de"} {Player.Race.ToLower()} {"een: "} ");
+        Instelbaar.Print($"Natuurlijk is {Player.Name} {"de"} {Player.Race.ToLower()} {"een: "} ");
         Console.WriteLine();
 
         Selector("Gunslinger", "Fighter", "Samurai", 2, typeof(Entity));
         Console.Clear();
-        Console.WriteLine($"{Player.Name} {Player.Race.ToLower()} {Player.Klass.ToLower()} klint goed");
+        Instelbaar.Print($"{Player.Name} {Player.Race.ToLower()} {Player.Klass.ToLower()} klint goed");
         Thread.Sleep(800);
-        Console.WriteLine("Dat was alles veel plezier");
+        Instelbaar.Print("Dat was alles veel plezier");
         Thread.Sleep(1200);
         Console.Clear();
 
         Instelbaar.Print($"{Player.Name}. Tijdens een bank overval werdt je betrapt en nu zit je vast. \nNa maanden graven heb je een geheime gang net buiten je cel kunnen graven.\nJe besluit om:");
         Console.WriteLine();
         Selector("De tunnel in te gaan", "Een sleutel proberen te stelen", "Opnieuw te beginnen", 4, typeof(PlayerChoices)); // eerste playerkeuze
-
 
         Console.ReadLine();
     }
@@ -173,14 +171,16 @@ public static class PlayerChoices
     public static void Detunnelintegaan()// eerste player keuze
     {
         Console.Clear();
-        Instelbaar.Print("Je besluit de tunnel in te gaan en komt nu midden in de gang uit. Een bewaker ziet je staan en komt op je af.");
+        Instelbaar.Print("Je besluit de tunnel in te gaan en komt nu midden in de gang uit. Een bewaker ziet je staan en hij komt op je af!.");
+        Console.ReadLine();
         Combat.StartCombat(Zones.StartEnemies);
     }
 
     public static void Eensleutelproberentestelen()// eerste player keuze
     {
         Console.Clear();
-        Instelbaar.Print("Je komt voorzichtig dicht bij de cel bewaker en pakt door de tralies heen zijn sleutelbos van zijn riem af. \n Je gebruikt de sleutels om de deur te openen en de bewaker te verassen");
+        Instelbaar.Print("Je komt stilletjes dichter bij de deur, waar de bewaker staat en  cel bewaker en pakt door de tralies heen zijn sleutelbos van zijn riem af. \nJe gebruikt de sleutels om de deur te openen en de bewaker te verassen");
+        Console.ReadLine();
         Combat.StartCombat(Zones.StartEnemies);
     }
 

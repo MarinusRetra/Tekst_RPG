@@ -12,11 +12,10 @@
     public static List<Entity> StartEnemies = new List<Entity>();
     static Zones() 
     {
-
         //enemies eerste encounter
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 70, 20, 0, "Surprised Guard"));
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 0, "Stupid Guard"));
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 60, 20, 0, "Clumsy Guard")) ;
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 70, 20, 2, "Surprised Guard"));
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 2, "Stupid Guard"));
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 60, 20, 2, "Clumsy Guard")) ;
 
         //eerste zone
         PrisonPeople.Add(new Entity("Fighter", "Orc", 100, 15, 0, "Spooked Guard")); //1F

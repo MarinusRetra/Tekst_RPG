@@ -3,7 +3,7 @@ using Tekst_RPG_Beter;
 
 public class Instelbaar
 {
-    static int tekstSpeed;
+    static int tekstSpeed = 5;
     static int difficulty;
 
     public static int Difficulty
@@ -17,8 +17,8 @@ public class Instelbaar
         get { return tekstSpeed; } 
         set { tekstSpeed = value > 0 && value < 101 ? tekstSpeed = value : 5;} 
       } // zolang de waarde hoger is dan 0 en lager dan 100 wordt de waarde gezet, zo niet, dan wordt die 5 
-    
-    public static void Print(string print) // lagere speed is sneller
+
+    public static void Print(string print, bool Writeline = true) // lagere speed is sneller
     {
         int speed = tekstSpeed;
         print.ToCharArray();
@@ -27,7 +27,10 @@ public class Instelbaar
             Console.Write(c);
             Thread.Sleep(speed);
         }
-        Console.WriteLine();
+        if (Writeline)
+        {
+            Console.WriteLine();
+        }
     }
 
     public static void SetTekstSpeed()
