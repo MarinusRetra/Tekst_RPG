@@ -89,8 +89,7 @@ public static class Combat
         if (Enemy.Health <= 0)
         {
             PlayerChoices.menu = false;
-            Console.Clear();
-            Console.WriteLine($"{Enemy.Name} is verslagen!");
+            Player = Entity.CheckLevelUpAndSetNextMilestone(Player, Enemy);
             opponent.Remove(Enemy);
             Console.ReadLine();
         }
@@ -209,7 +208,7 @@ public static class Combat
     public static void ShowCombatStat(bool swapTurn = true)
     { 
         Console.SetCursorPosition(0, 4);
-        Console.WriteLine($"{Enemy.Name} : Health {Enemy.Health}");
+        Console.WriteLine($"Level {Enemy.Level} {Enemy.Name} : Health {Enemy.Health}");
         Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.skillCD}");
         Console.SetCursorPosition(0, 0);
         if (swapTurn)

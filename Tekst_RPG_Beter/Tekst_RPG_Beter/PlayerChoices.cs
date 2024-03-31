@@ -88,19 +88,19 @@ public static class PlayerChoices
                     case (0):
                         if (function1 == "Attack")
                         { 
-                          method1.Invoke(null, new object[] {Player, Combat.Enemy, false});
+                            method1.Invoke(null, new object[] {Player, Combat.Enemy, false});
                         }
                         else
-                        method1.Invoke(null, null);
-                        break;
+                            method1.Invoke(null, null);
+                    break;
                     case (1):
                         if (function2 == "Guard")
                         {
                             method2.Invoke(null, new object[] { Player });
                         }
                         else
-                        method2.Invoke(null, null);
-                        break;
+                            method2.Invoke(null, null);
+                    break;
                     case (2):
                         if (function3 == "UseSkill")
                         {
@@ -108,8 +108,8 @@ public static class PlayerChoices
                             // roept de functie met paramaters aan als het de use skill functie is
                         }
                         else
-                        method3.Invoke(null, null);
-                        break;
+                            method3.Invoke(null, null);
+                    break;
                 }
             }
         }

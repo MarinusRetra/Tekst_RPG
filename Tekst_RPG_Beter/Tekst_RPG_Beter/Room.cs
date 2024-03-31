@@ -2,45 +2,49 @@
 
 public class Room
 {
-	public string roomDescription; // description voor de player 
-	public bool Encounter; // dit checkt of een kamer een encounter heeft
-	public List<string> roomDescriptions = new List<string>() {"Yo", "Hoi", "Description"};
+	public string roomDescription { get; set; } // description voor de player 
+	public bool Encounter { get; set; } // dit checkt of een kamer een encounter heeft
 
-	public Room(bool Encounter, string roomDescription)
+   static Random random = new Random();
+
+	public  List<string> roomDescriptionsEncounter = new List<string>() {"Yo", "Hoi", "Description"};
+	public  List<string> roomDescriptionsSafe = new List<string>() { "SafeRoom1", "SafeRoom2", "SafeRoom3" };
+ 
+
+	public Room(bool _Encounter, string _roomDescription)
 	{ 
-	  
+	  roomDescription = _roomDescription;
+      Encounter = _Encounter;
 	}   
      
 
-	public void StartRoom()
+	public static Room StartRoom()
 	{
-		Room Start = new Room(true, "!");
+		return new Room(true, "!");
 	}
-	public void RandomRooms(int _roomCount, int _enemyChance, int _lootChance)
+	public List<Room> RandomRooms(int _roomCount, int _enemyChance = 70, int _lootChance = 30)
 	{ // maak een lijst aan rooms die de speler in kan stellen om eigen moeilijkheidsgraad aan te kunnen passes
-	  
-	  List<Room> rooms = new List<Room>();
-	  Random random = new Random();
 
-	   for (int i = 0; i <= _roomCount; i++)
-       {
-			rooms.Add(new Room(false, "Yo"));
-       }
+	    List<Room> RoomsList = new List<Room>();
 
-	   foreach (Room room in rooms) 
-	   { 
-		    int isEnemy = random.Next(_enemyChance, 100);
-			if (isEnemy < _enemyChance)// als enemychance 70 gebeurt dit 70% van de tijd
+		for (int i = 0; i <= _roomCount-1; i++)
+	    {
+		    int RandomGetal = random.Next(1,101);
+			Room kamer = new Room(false,"");
+			if (RandomGetal < _enemyChance)// als RandomGetal lager is dan 70 gebeurt dit
 			{
-				room.Encounter = true;
-				room.roomDescription = room.roomDescriptions[random.Next(0, roomDescriptions.Count)];
-			}
-			else
+				kamer.Encounter = true;
+				kamer.roomDescription = roomDescriptionsEncounter[random.Next(0, roomDescriptionsEncounter.Count)];
+            }
+            else
 			{ 
-			    room.Encounter = false;
-				room.roomDescription = room.roomDescriptions[random.Next(0, roomDescriptions.Count)];
-			}
-	   }
+			    kamer.Encounter = false;
+				kamer.roomDescription = roomDescriptionsSafe[random.Next(0, roomDescriptionsSafe.Count)];
+            }
+			RoomsList.Add(kamer);
+        }
+
+		return RoomsList;
 	   
 		 
 	  

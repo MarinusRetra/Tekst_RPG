@@ -12,13 +12,14 @@
     public static List<Entity> StartEnemies = new List<Entity>();
     static Zones() 
     {
-        //enemies eerste encounter
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 70, 20, 2, "Surprised Guard"));
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 2, "Stupid Guard"));
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 60, 20, 2, "Clumsy Guard")) ;
+        //eerste paar enemies
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 70, 20, 2, "Surprised Guard"));// level 2 100 hp, 30 dmg en geeft 260 xp
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 2, "Stupid Guard")); //level 2 70 hp, 30 damage en geeft 200 xp
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 60, 20, 2, "Clumsy Guard")) ; // level 2 90 hp, 30 damage en geeft 240 xp
+        StartEnemies.Add(new Entity("Gunslinger", "Orc", 60, 20, 3, "Intimidating Guard")); // level 3 105 hp, 35 damage en geeft 280 xp
 
         //eerste zone
-        PrisonPeople.Add(new Entity("Fighter", "Orc", 100, 15, 0, "Spooked Guard")); //1F
+        PrisonPeople.Add(new Entity("Fighter", "Orc", 100, 15, 0, "Spooked Guard")); //1
         PrisonPeople.Add(new Entity("Samurai", "Elf", 70, 30, 0, "Elf Guard")); // 2
         PrisonPeople.Add(new Entity("Fighter", "Orc", 120, 10, 0, "Orc Guard")); // 3
         PrisonPeople.Add(new Entity("Gunslinger", "Mens", 30, 40, 0, "Watchtower Guard")); // 4

@@ -15,7 +15,7 @@ public class Entity
 	public int CritChance { get; set; }
 	public string Race { get; set; }
 	public string Klass { get; set; }
-	public string XP_To_Give { get; set; }
+	public int XP_To_Give { get; set; }
 
 
     public int SkillCD 
@@ -41,7 +41,7 @@ public class Entity
 		switch (race)
 		{
 			case "Mens":
-				levelBooster = new List<int>() { 15, 5 }; // balanced
+				levelBooster = new List<int>() { 15, 5 }; // balanced 
 				break;
 			case "Orc":
 				levelBooster = new List<int>() { 20, 3 }; // veel hp minder damage
@@ -63,9 +63,29 @@ public class Entity
 		maxHealth = Health;
 		Damage = damageIn + (levelBooster[1] * Level);
 		XP = 0;
-		XP_To_Give += Health + Damage * Level;
+		XP_To_Give += (Health + Damage) * Level;
 		skillCD = SkillCD;
 	}
+
+	public static Entity CheckLevelUpAndSetNextMilestone(Entity user, Entity EnemyDefeated)
+	{
+        Console.Clear();
+        user.XP += EnemyDefeated.XP_To_Give; // voegt enemy xp to give aan de speler
+        int milestoneXP = 300 * user.Level; // zet de benodigde xp voor het volgende level
+        Console.WriteLine($"{EnemyDefeated.Name} is verslagen! + {EnemyDefeated.XP_To_Give}XP / {milestoneXP}"); // vertelt hoeveel xp je nog nodig hebt
+
+		if (user.XP >= milestoneXP) // als je over de milestoneXP zit dan ga je een level omhoog
+		{
+			user.Level++;
+		    user = new Entity(user.Klass, user.Race, user.maxHealth, user.Damage, user.Level, user.Name);
+			// maakt een nieuwe speler zodat de code in de constructor opnieuw wordt uitgevoerd, dit is nodig omdat daar de extra stats die je krijgt van
+			// een level up in de constructor toegevoegd worden.
+		    Instelbaar.Print($"You leveled up! \nNew Level: {user.Level} \nNew MaxHP: {user.maxHealth} \nNew Damage: {user.Damage}");
+			// print je nieuwe stats naar de console
+		}
+		return user;
+    }
+
 
 
 	public static void Gunslinger()
