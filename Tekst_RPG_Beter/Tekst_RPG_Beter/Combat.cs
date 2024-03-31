@@ -180,16 +180,9 @@ public static class Combat
     public static void Attack(Entity user = null, Entity target = null, bool printStuff = true)
     {
         Console.SetCursorPosition(0, 7);
-        Console.WriteLine(printStuff ? $"{user.Name} valt aan met zijn {user.Klass} moves" : "" );
+        Console.WriteLine(printStuff ? "" : $"{user.Name} valt aan met zijn {user.Klass} moves");
         Thread.Sleep(1000);
-        if (target == null || user == null)
-        {
-            Enemy.Health -= random.Next(Player.Damage, Player.Damage * 2);
-        }
-        else
-        {
-            target.Health -= random.Next(user.Damage, user.Damage * 2);
-        }
+        target.Health -= random.Next(user.Damage, user.Damage * 2);
         ShowCombatStat();
     }
 

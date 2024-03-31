@@ -54,7 +54,6 @@ public class Entity
 				break;
 		}
 
-
 		Level = levelIn;
 		Name = name;
 		Race = race;

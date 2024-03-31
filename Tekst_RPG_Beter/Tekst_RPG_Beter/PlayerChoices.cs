@@ -1,12 +1,9 @@
-﻿using System;
-using System.Numerics;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System.Reflection;
 using Tekst_RPG_Beter;
 
 public static class PlayerChoices
 {
-    public static Entity Player = new Entity("", "", 100, 20, 0, "");
+    public static Entity Player = new Entity("", "", 200, 20, 0, "");
     public static bool menu = true;
 
     /// <summary>
@@ -22,7 +19,6 @@ public static class PlayerChoices
         Instelbaar.Print(function1);
         Instelbaar.Print(function2);
         Instelbaar.Print(function3);
-
 
         // 25 tot 32 is voor het verwijderen van spaties tussen de woorden van de input
         // dit heb ik gedaan zodat ik meerdere woorden als optie aan de speler kan laten zien
