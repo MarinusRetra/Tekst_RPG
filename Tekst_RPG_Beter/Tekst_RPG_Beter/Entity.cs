@@ -4,8 +4,11 @@ using Tekst_RPG_Beter;
 
 public class Entity
 {
-	public int skillCD;
+	static Random ran = new Random();
+
     public int maxHealth;
+
+	public bool HasLoot { get; set; }
 	public bool Deflecting { get; set; }
 	public string Name { get; set; }
 	public int Health { get; set; }
@@ -18,17 +21,7 @@ public class Entity
 	public int XP_To_Give { get; set; }
 
 
-    public int SkillCD 
-	{ 
-		get 
-		{
-			return skillCD; 
-		}
-		set 
-		{
-			skillCD = 0;
-		}
-	}
+    public int SkillCD { get; set; }
 
 	
     List<int> levelBooster; //bepaalt met hoevel de stats omhoog gaan per level
@@ -41,16 +34,16 @@ public class Entity
 		switch (race)
 		{
 			case "Mens":
-				levelBooster = new List<int>() { 15, 5 }; // balanced 
+				levelBooster = new List<int>() { 15, 5 ,3}; // balanced 
 				break;
 			case "Orc":
-				levelBooster = new List<int>() { 20, 3 }; // veel hp minder damage
+				levelBooster = new List<int>() { 25, 3 , 1}; // veel hp minder damage lage critChance
 				break;
 			case "Elf":
-				levelBooster = new List<int>() { 10, 7 }; // laag hp veel damage
+				levelBooster = new List<int>() { 10, 6 , 5}; // laag hp veel damage, hoogste critChance
 				break;
 			default:
-				levelBooster = new List<int>() { 10, 10 }; 
+				levelBooster = new List<int>() { 30, 7, 6 }; // hoogste in alles mischien komt er een secret boss of zoiets
 				break;
 		}
 
@@ -64,10 +57,11 @@ public class Entity
 		Damage = damageIn + (levelBooster[1] * Level);
 		XP = 0;
 		XP_To_Give += (Health + Damage) * Level;
-		skillCD = SkillCD;
+		SkillCD = SkillCD;
+		HasLoot = ran.Next(5) == 0; // 1/5 voor 0. Als 0 doe HasLoot true
 	}
 
-	public static Entity CheckLevelUpAndSetNextMilestone(Entity user, Entity EnemyDefeated)
+	public static void CheckLevelUpAndSetNextMilestone(Entity user, Entity EnemyDefeated)
 	{
         Console.Clear();
         user.XP += EnemyDefeated.XP_To_Give; // voegt enemy xp to give aan de speler
@@ -83,7 +77,6 @@ public class Entity
 		    Instelbaar.Print($"You leveled up! \nNew Level: {user.Level} \nNew MaxHP: {user.maxHealth} \nNew Damage: {user.Damage}");
 			// print je nieuwe stats naar de console
 		}
-		return user;
     }
 
 

@@ -169,7 +169,7 @@ public static class PlayerChoices
         Console.Clear();
         Instelbaar.Print("Je besluit de tunnel in te gaan en komt nu midden in de gang uit. Een bewaker ziet je staan en hij komt op je af!.");
         Console.ReadLine();
-        Combat.StartCombat(Zones.StartEnemies);
+        Combat.StartCombat(Zones.StartEnemies[0]);
     }
 
     public static void Eensleutelproberentestelen()// eerste player keuze
@@ -177,7 +177,7 @@ public static class PlayerChoices
         Console.Clear();
         Instelbaar.Print("Je komt stilletjes dichter bij de deur, waar de bewaker staat en  cel bewaker en pakt door de tralies heen zijn sleutelbos van zijn riem af. \nJe gebruikt de sleutels om de deur te openen en de bewaker te verassen");
         Console.ReadLine();
-        Combat.StartCombat(Zones.StartEnemies);
+        Combat.StartCombat(Zones.StartEnemies[1]);
     }
 
     public static void Opnieuwtebeginnen()// eerste player keuze

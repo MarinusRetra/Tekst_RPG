@@ -18,10 +18,11 @@ public static class Combat
 
     //startCombat pakt een list met Entities en in die list zitten de enemies die in elke zone kunnen verschijnen
 
-    public static void StartCombat(List<Entity> opponent)
+    public static void StartCombat(Entity opponent)
     {
         isPlayerTurn = true;
-        Enemy = opponent.ElementAt(random.Next(0, opponent.Count-1));//kan alles pakken behalve de laatste van de list
+        Player.SkillCD = 0;
+        Enemy = opponent;
 
 
     CombatLoop:
@@ -31,9 +32,9 @@ public static class Combat
             Console.Clear();
             ShowCombatStat(false);
             PlayerChoices.Selector("Attack", "Guard", "Use Skill", 0, typeof(Combat));
-            if (Player.skillCD > 0)
+            if (Player.SkillCD > 0)
             { 
-                Player.skillCD--;
+                Player.SkillCD--;
             }
 
         }
@@ -46,7 +47,7 @@ public static class Combat
 
             select = random.Next(1, 3); // welke actie de enemy gaat doen op zijn beurt attack of guard
             
-            if(Enemy.skillCD == 0)// de enemy doet altijd zijn skill op het moment dat hij die krijgt
+            if(Enemy.SkillCD == 0)// de enemy doet altijd zijn skill op het moment dat hij die krijgt
             {
                 select = 3;
             }
@@ -70,9 +71,9 @@ public static class Combat
                 throw new Exception("Er gaat iets fout in combat");
             }
 
-            if (Enemy.skillCD > 0)
+            if (Enemy.SkillCD > 0)
             {
-              Enemy.skillCD--;
+              Enemy.SkillCD--;
             }
         }
 //--------------------------------------------Enemy actions ^^
@@ -89,8 +90,8 @@ public static class Combat
         if (Enemy.Health <= 0)
         {
             PlayerChoices.menu = false;
-            Player = Entity.CheckLevelUpAndSetNextMilestone(Player, Enemy);
-            opponent.Remove(Enemy);
+            Entity.CheckLevelUpAndSetNextMilestone(Player, Enemy);
+            Zones.FindList(Enemy, Zones.listList).Remove(Enemy);
             Console.ReadLine();
         }
         if (Enemy.Health > 0 && Player.Health > 0)
@@ -102,7 +103,7 @@ public static class Combat
 
     public static void UseSkill(Entity user, Entity target)
     {
-          if (user.skillCD != 0 && isPlayerTurn)
+          if (user.SkillCD > 0 && isPlayerTurn)
           {
              //stop de functie als SkillCD niet null is en ga terug naar het menu
              Console.WriteLine("Je skill is op cooldown");
@@ -124,21 +125,21 @@ public static class Combat
                         Thread.Sleep(700);
                         Attack(user, target, false);
                         ShowCombatStat();
-                        user.skillCD = 3;
+                        user.SkillCD = 3;
                     break;
 
                     // geeft 50% van je maximum health terug en je valt aan
                     case "Samurai":
                         user.Health += user.maxHealth / 2;
                         Attack(user, target);
-                        user.skillCD = 4;
+                        user.SkillCD = 4;
                     break;
 
                     // Reflecteer de enemy skill als die gebruikt wordt na jouw beurt
                     case "Fighter": 
                         user.Deflecting = true;
                         ShowCombatStat();
-                        user.skillCD = 2;
+                        user.SkillCD = 2;
                     break;
                 }
             }
@@ -149,22 +150,22 @@ public static class Combat
                 {
                     case "Gunslinger":
                         Attack(user, user, false);
-                        Thread.Sleep(700);
+                        //Thread.Sleep(1000);
                         Attack(user, user, false);
-                        ShowCombatStat();
-                        user.skillCD = 3;
+                        user.SkillCD = 3;
                     break;
 
                     case "Samurai":
                         user.Health -= user.maxHealth / 2; 
                         ShowCombatStat();
-                        user.skillCD = 4;
+                        user.SkillCD = 4;
                     break;
 
                     case "Fighter":
-                        Console.WriteLine("Both of you are ready to counterattack eachother........no one moved");
+                        Console.WriteLine("Both of stand ready to counterattack. Nothing Happens");
                         ShowCombatStat();
-                        user.skillCD = 2;
+                        user.SkillCD = 2;
+                        target.SkillCD = 2;
                     break;
 
                     default:
@@ -180,9 +181,9 @@ public static class Combat
     {
         Console.SetCursorPosition(0, 7);
         Console.WriteLine(printStuff ? "" : $"{user.Name} valt aan met zijn {user.Klass} moves");
-        Thread.Sleep(1000);
         target.Health -= random.Next(user.Damage, user.Damage * 2);
         ShowCombatStat();
+        Thread.Sleep(1000);
     }
 
     public static void Guard(Entity user)
@@ -209,7 +210,7 @@ public static class Combat
     { 
         Console.SetCursorPosition(0, 4);
         Console.WriteLine($"Level {Enemy.Level} {Enemy.Name} : Health {Enemy.Health}");
-        Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.skillCD}");
+        Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.SkillCD}");
         Console.SetCursorPosition(0, 0);
         if (swapTurn)
         {
@@ -217,4 +218,10 @@ public static class Combat
             PlayerChoices.menu = isPlayerTurn;
         }
     }
+
+   
+
+
+
+
 }

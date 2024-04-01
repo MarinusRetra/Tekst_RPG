@@ -6,21 +6,28 @@
         {
             PlayerChoices.Selector("Start", "Options", "Quit", 0, typeof(PlayerChoices));
 
-            //var room = Room.StartRoom();
-            //List<Room> StarRooms = room.RandomRooms(100,70,10);
-            //
-            //foreach (Room kamer in StarRooms)
-            //{
-            //    Console.WriteLine($"{kamer.roomDescription}\nIs encounter: {kamer.Encounter}");
-            //    if (kamer.Encounter)
-            //    {
-            //        // combat
-            //    }
-            //    else 
-            //    {
-            //        // niet combat
-            //    }
-            //}
+            var room = Room.StartRoom();
+            List<Room> PrisonRooms = room.RandomRooms(Zones.PrisonPeople, 70);
+            
+            foreach (Room kamer in PrisonRooms)
+            {
+                Instelbaar.Print($"{kamer.roomDescription}");
+                Console.ReadLine();
+                if (kamer.Encounter)
+                {
+                    if (kamer.Enemy.Health > 0)
+                    { 
+                     Combat.StartCombat(kamer.Enemy);
+                    }
+                    else
+                    Instelbaar.Print("De persoon die je tegenkomt is al dood");
+                }
+                else 
+                {
+                     Instelbaar.Print(kamer.roomDescription);
+                     Console.ReadLine();// selector (optie1, optie2, optie3)
+                }
+            }
         }
     }
 }

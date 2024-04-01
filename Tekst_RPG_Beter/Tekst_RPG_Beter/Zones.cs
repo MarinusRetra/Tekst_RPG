@@ -10,6 +10,9 @@
     public static List<Entity> ForestPeople = new List<Entity>();
 
     public static List<Entity> StartEnemies = new List<Entity>();
+
+    public static List<List<Entity>> listList = new List<List<Entity>> { PrisonPeople, ForestPeople, StartEnemies};
+    // deze list wordt gebruikt om te kijken in welke list een entity object zit
     static Zones() 
     {
         //eerste paar enemies
@@ -58,6 +61,26 @@
             entity.Health += entity.Health * Instelbaar.Difficulty;
         }
         
+    }
+
+    /// <summary>
+    /// Pakt de list van de ingegeven Entity uit een list met lists
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="Enemy">Entity waarvan je de list wilt hebben</param>
+    /// <param name="listLists">De doorzochte lists waarvan het object in kan zitten</param>
+    /// <returns></returns>
+    public static List<Entity> FindList(Entity Enemy, List<List<Entity>> listLists)
+    {
+        foreach (var list in listLists)
+        {
+            if (list.Contains(Enemy))
+            {
+                return list;
+            }
+        }
+        Console.WriteLine("Niets gevonden");
+        return null;
     }
 
 }
