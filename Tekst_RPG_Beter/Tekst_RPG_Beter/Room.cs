@@ -27,50 +27,23 @@ public class Room
 
 	public static void PickEvent(List<Entity> currentZone)
 	{
-	    string ChosenEvent = SafeEvents[random.Next(0, SafeEvents.Count)];
 		if (currentZone == Zones.PrisonPeople)
 		{
-			PrisonRoomEventStart(ChosenEvent);
+			PrisonRoomEventStart();
 		}
 		if (currentZone == Zones.ForestPeople)
 		{ 
-			ForestRoomEventStart(ChosenEvent);
+			ForestRoomEventStart();
         }
     }
-	static void PrisonRoomEventStart(string chosenEvent)
+	static void PrisonRoomEventStart()
 	{
-		switch (chosenEvent) 
-		{
-			case "Event1":
-				
-			break;
-
-            case "Event2":
-
-            break;
-
-            case "Event3":
-
-            break;
-        }
+		Minigames.BoterKaas("Schuif");
 	}
 
-    static void ForestRoomEventStart(string chosenEvent)
+    static void ForestRoomEventStart()
     {
-        switch (chosenEvent)
-        {
-            case "Event1":
-
-            break;
-
-            case "Event2":
-
-            break;
-
-            case "Event3":
-
-            break;
-        }
+		Minigames.BoterKaas();
     }
 
     public static Room StartRoom()

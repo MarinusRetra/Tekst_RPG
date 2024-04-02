@@ -38,7 +38,7 @@ public static class Minigames
 
         if (gameSelected == "Schuif")
         {
-        TryUntilPossible:
+        TryUntilPossible: // dit breekt soms fix dit later ------------------------------------------------------------
             int checkSolvable = 0;
             speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
             speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
@@ -134,14 +134,22 @@ public static class Minigames
                     }
                     PrintBord(speelBord);
                     Console.Write($" {pos1},{pos2}");
+                    if (HasPlayerWon('X', speelBord))
+                    {
+                        Console.WriteLine("Je hebt gewonnen!");
+                        Thread.Sleep(2000);
+                        i = 4;
+                        j = 4;
+                        break;
+                    }
 
                 }
                 speelBord[pos1, pos2] = 'X';
                 PrintBord(speelBord);
 
-
-
                 //Check wincondities vvv
+            if (gameSelected != "Schuif")
+            { 
                 if (HasPlayerWon('X', speelBord))
                 {
                     Console.WriteLine("Je hebt gewonnen!");
@@ -177,6 +185,7 @@ public static class Minigames
                     break;
                 }
                 // CheckWincondities ^^^
+            }
 
 
                 if (gameSelected != "Schuif")
