@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.Serialization;
 
 public class Room
 {
@@ -7,17 +9,70 @@ public class Room
 	public bool Encounter { get; set; } // dit checkt of een kamer een encounter heeft
 	public Entity Enemy { get; set; }
 
-    static Random random = new Random();
+	static Random random = new Random();
 
 	//public  List<string> roomDescriptionsEncounter = new List<string>() {"Yo", "Hoi", "Description"};
-	public  List<string> roomDescriptionsSafe = new List<string>() { "SafeRoom1", "SafeRoom2", "SafeRoom3" };
- 
+	public List<string> roomDescriptionsSafe = new List<string>() { "SafeRoom1", "SafeRoom2", "SafeRoom3" };
+
+	public static List<string> SafeEvents = new List<string>() { "Event1", "Event2", "Event3" };
+	//drie event functies met een zone list als parameter die wordt gebruikt als mogelijke optie
+
 
 	public Room(bool _Encounter, string _roomDescription)
-	{ 
-	  roomDescription = _roomDescription;
-      Encounter = _Encounter;
+	{
+		roomDescription = _roomDescription;
+		Encounter = _Encounter;
+
+	}
+
+	public static void PickEvent(List<Entity> currentZone)
+	{
+	    string ChosenEvent = SafeEvents[random.Next(0, SafeEvents.Count)];
+		if (currentZone == Zones.PrisonPeople)
+		{
+			PrisonRoomEventStart(ChosenEvent);
+		}
+		if (currentZone == Zones.ForestPeople)
+		{ 
+			ForestRoomEventStart(ChosenEvent);
+        }
     }
+	static void PrisonRoomEventStart(string chosenEvent)
+	{
+		switch (chosenEvent) 
+		{
+			case "Event1":
+				
+			break;
+
+            case "Event2":
+
+            break;
+
+            case "Event3":
+
+            break;
+        }
+	}
+
+    static void ForestRoomEventStart(string chosenEvent)
+    {
+        switch (chosenEvent)
+        {
+            case "Event1":
+
+            break;
+
+            case "Event2":
+
+            break;
+
+            case "Event3":
+
+            break;
+        }
+    }
+
     public static Room StartRoom()
     {
         return new Room(true, "!");
@@ -47,4 +102,6 @@ public class Room
         }
 		return RoomsList;
 	}
+
+
 }
