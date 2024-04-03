@@ -50,11 +50,11 @@
         List<string> roomDescriptionsEncounter = new List<string> { };
 		if (Zone == Zones.PrisonPeople)
 		{ 
-		 roomDescriptionsEncounter = roomDescriptionsPrisonPeople;
+			roomDescriptionsEncounter = roomDescriptionsPrisonPeople;
 		}
 		else if (Zone == Zones.ForestPeople)
 		{ 
-         roomDescriptionsEncounter = roomDescriptionsPrisonPeople;
+			roomDescriptionsEncounter = roomDescriptionsForestPeople;
 		}
 
 
