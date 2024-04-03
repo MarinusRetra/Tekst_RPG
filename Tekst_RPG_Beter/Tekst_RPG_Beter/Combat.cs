@@ -67,7 +67,6 @@ public static class Combat
                 break;
 
                 default:
-                    ShowCombatStat();
                 throw new Exception("Er gaat iets fout in combat");
             }
 
@@ -85,6 +84,7 @@ public static class Combat
             Console.Clear();
             Console.WriteLine("You died");
             Console.ReadLine();
+            Environment.Exit(0);
         }
 
         if (Enemy.Health <= 0)
@@ -182,8 +182,8 @@ public static class Combat
         Console.SetCursorPosition(0, 7);
         Console.WriteLine(printStuff ? "" : $"{user.Name} valt aan met zijn {user.Klass} moves");
         target.Health -= random.Next(user.Damage, user.Damage * 2);
-        ShowCombatStat();
         Thread.Sleep(1000);
+        ShowCombatStat();
     }
 
     public static void Guard(Entity user)
@@ -207,7 +207,10 @@ public static class Combat
     /// Geeft alle stats die de player moet zien tijdens combat op het scherm en wisselt de beurt.
     /// </summary>
     public static void ShowCombatStat(bool swapTurn = true)
-    { 
+    {
+        Console.Clear();
+        Console.SetCursorPosition(0, 0);
+        Console.WriteLine("Attack\nGuard\nSkill");
         Console.SetCursorPosition(0, 4);
         Console.WriteLine($"Level {Enemy.Level} {Enemy.Name} : Health {Enemy.Health}");
         Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.SkillCD}");
@@ -217,6 +220,7 @@ public static class Combat
             isPlayerTurn = !isPlayerTurn;
             PlayerChoices.menu = isPlayerTurn;
         }
+        Thread.Sleep(200);
     }
 
    

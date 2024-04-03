@@ -38,7 +38,7 @@ public static class Minigames
 
         if (gameSelected == "Schuif")
         {
-        TryUntilPossible: // dit breekt soms fix dit later ------------------------------------------------------------
+        TryUntilPossible: // dit breekt soms fix dit ----------------------------------------
             int checkSolvable = 0;
             speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
             speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
@@ -53,15 +53,14 @@ public static class Minigames
                     }
                 }
             }
-            if (checkSolvable < 3)
+
+            if (checkSolvable < 3 || HasPlayerWon('X', speelBord))
             {
                 goto TryUntilPossible;
             }
-            if (HasPlayerWon('X', speelBord))
-            {
-                goto TryUntilPossible;
-            } //deze twee checks zorgen dat er niet een onmogelijk of al opgelost bord gemaakt is door elke keer opnieuw een bord
-              //te maken totdat er een oplosbare is
+            //deze twee checks zorgen dat er niet een bord met minder dan 3 X of een al opgelost bord
+            //gemaakt is door elke keer opnieuw een bord
+            //te maken totdat er een oplosbare is
         }
 
         for (int i = 0; i < speelBord.GetLength(0); i++)
