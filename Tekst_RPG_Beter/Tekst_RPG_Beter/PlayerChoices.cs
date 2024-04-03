@@ -16,6 +16,7 @@ public static class PlayerChoices
     /// <param name="insertType"> Een reference naar de class waarvan je de functies wilt gebruiken: typeof(Class naam)</param>
     public static void Selector(string function1, string function2, string function3, int cursorStart, Type insertType)
     {
+        Console.CursorVisible = true;
         Instelbaar.Print(function1);
         Instelbaar.Print(function2);
         Instelbaar.Print(function3);

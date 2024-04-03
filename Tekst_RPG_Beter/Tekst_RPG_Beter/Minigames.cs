@@ -6,6 +6,7 @@ public static class Minigames
     static Random rand = new Random();
     static void PrintBord(char[,] speelBord) // print het speelbord
     {
+        Console.Clear();
         Console.SetCursorPosition(0, 0);
         for (int i = 0; i < speelBord.GetLength(0); i++)
         {
@@ -27,8 +28,10 @@ public static class Minigames
     /// <param name="gameSelected">Als hier Schuif meegeeft dan krijg je een pre-generated bord die waarbij je zelf de X goed moet zetten</param>
     public static void BoterKaas(string gameSelected = "")
     {
+        Console.CursorVisible = false;
         int pos1 = 0;
         int pos2 = 0;
+    TryUntilPossible:
         char[,] speelBord =
         {
         { 'S', '□', '□' },
@@ -38,11 +41,17 @@ public static class Minigames
 
         if (gameSelected == "Schuif")
         {
-        TryUntilPossible: // dit breekt soms fix dit ----------------------------------------
             int checkSolvable = 0;
-            speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
-            speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
-            speelBord[rand.Next(0, 3), rand.Next(0, 3)] = 'X';
+            for (int i = 0; i < 3; i++)
+            {
+                int choosePos1 = rand.Next(0,3);
+                int choosePos2 = rand.Next(0,3);
+                if (speelBord[choosePos1, choosePos2] != 'S')
+                {
+                    speelBord[choosePos1, choosePos2] = 'X';
+                }
+                else { goto TryUntilPossible; }
+            }
             for (int i = 0; i < speelBord.GetLength(0); i++)
             {
                 for (int j = 0; j < speelBord.GetLength(1); j++)

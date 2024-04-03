@@ -13,24 +13,30 @@
           {
               if (kamer.Encounter)
               {
-                  if (kamer.Enemy.Health > 0)
-                  {
-                      Combat.StartCombat(kamer.Enemy);
-                  }
-                  else
-                      Instelbaar.Print("De persoon die je tegenkomt is al dood");
+                    if (kamer.Enemy.Health > 0)
+                    {
+                        Console.Clear();
+                        Instelbaar.Print(kamer.roomDescription);
+                        Console.ReadLine();
+                        Combat.StartCombat(kamer.Enemy);
+                    }
+                    else
+                        continue;
               }
               else
               {
+                  Console.Clear();
                   Instelbaar.Print(kamer.roomDescription);
                   Console.ReadLine();
-                  Console.Clear();
                   Room.PickEvent(Zones.PrisonPeople);
               }    
           }
           Console.Clear();
-          Instelbaar.Print("Je hoort een grote vijand aankomen");
-          PlayerChoices.Selector("Verder","CheckInventory","WachtEnKijk", 2 , typeof(PlayerChoices));
+          Instelbaar.Print("You hear large footsteps further down the hall");
+          Console.ReadLine();
+          Console.Clear();
+          Instelbaar.Print(Room.roomDescriptionsPrisonPeople.Last());
+          Console.ReadLine();
           Combat.StartCombat(InsertRooms.Last().Enemy);
         }
     }

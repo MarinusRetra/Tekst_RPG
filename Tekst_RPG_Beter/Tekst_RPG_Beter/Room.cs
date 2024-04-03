@@ -1,9 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.Serialization;
-
-public class Room
+﻿public class Room
 {
 	public string roomDescription { get; set; } // description voor de player 
 	public bool Encounter { get; set; } // dit checkt of een kamer een encounter heeft
@@ -13,12 +8,11 @@ public class Room
 
 	//public  List<string> roomDescriptionsEncounter = new List<string>() {"Yo", "Hoi", "Description"};
 	public List<string> roomDescriptionsSafe = new List<string>() { "SafeRoom1", "SafeRoom2", "SafeRoom3" };
+	public static List<string> roomDescriptionsPrisonPeople = new List<string>() { };
+    public static List<string> roomDescriptionsForestPeople = new List<string>() { };
 
-	public static List<string> SafeEvents = new List<string>() { "Event1", "Event2", "Event3" };
-	//drie event functies met een zone list als parameter die wordt gebruikt als mogelijke optie
 
-
-	public Room(bool _Encounter, string _roomDescription)
+    public Room(bool _Encounter, string _roomDescription)
 	{
 		roomDescription = _roomDescription;
 		Encounter = _Encounter;
@@ -38,22 +32,34 @@ public class Room
     }
 	static void PrisonRoomEventStart()
 	{
-		Minigames.BoterKaas("Schuif");
+		Minigames.BoterKaas("Schuif"); //een aangepaste versie van boterkaas en eieren waar je symbolen moet schuifen
 	}
 
     static void ForestRoomEventStart()
     {
-		Minigames.BoterKaas();
+		Minigames.BoterKaas();//een boterkaas en eieren spel
     }
 
     public static Room StartRoom()
     {
         return new Room(true, "!");
     }
-	public List<Room> RandomRooms(List<Entity> Zone, int _enemyChance = 70)
+	public List<Room> RandomRooms(List<Entity> Zone,  int _enemyChance = 70)
 	{ // maak een lijst aan rooms die de speler in kan stellen om eigen moeilijkheidsgraad aan te kunnen passes
 
-	    List<Room> RoomsList = new List<Room>();
+        List<string> roomDescriptionsEncounter = new List<string> { };
+		if (Zone == Zones.PrisonPeople)
+		{ 
+		 roomDescriptionsEncounter = roomDescriptionsPrisonPeople;
+		}
+		else if (Zone == Zones.ForestPeople)
+		{ 
+         roomDescriptionsEncounter = roomDescriptionsPrisonPeople;
+		}
+
+
+
+        List<Room> RoomsList = new List<Room>();
 
 		for (int i = 0; i <= Zone.Count-1; i++) // deze loop loopt nog 1 keer ookal wordt er geen entity meer gezet aan kamer.Enemy,
 		// want de laatste element wordt nooit gepakt in de eerste if statement
@@ -63,8 +69,8 @@ public class Room
 			if (RandomGetal < _enemyChance)// als RandomGetal lager is dan 70 gebeurt dit
 			{
 				kamer.Encounter = true;
-				kamer.Enemy = Zone.ElementAt(random.Next(0,Zone.Count - 1));//pakt een random entity uit de list. kan alles pakken behalve de laatste van de list
-				kamer.roomDescription = "!";//roomDescriptionsEncounter[random.Next(0, roomDescriptionsEncounter.Count)];
+			    kamer.Enemy = Zone.ElementAt(random.Next(0,Zone.Count - 1));//pakt een random entity uit de list. kan alles pakken behalve de laatste van de list
+			    kamer.roomDescription = roomDescriptionsEncounter.ElementAt(Zone.IndexOf(kamer.Enemy));// pakt de description van EncounterDescList op hetzelfde element als het gepakte element van de Zone list
             }
             else
 			{ 
