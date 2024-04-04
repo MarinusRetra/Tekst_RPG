@@ -28,6 +28,9 @@ public static class Minigames
     /// <param name="gameSelected">Als hier Schuif meegeeft dan krijg je een pre-generated bord die waarbij je zelf de X goed moet zetten</param>
     public static void BoterKaas(string gameSelected = "")
     {
+        Entity Puzzel = new Entity();
+        Puzzel.Name = "Puzzel";
+        Puzzel.XP_To_Give = 300 * PlayerChoices.Player.Level; // zet het xp wat de puzzel geeft op dezelfde waarde die speler nodig heeft om een level omhoog te gaan
         Console.CursorVisible = false;
         int pos1 = 0;
         int pos2 = 0;
@@ -102,6 +105,8 @@ public static class Minigames
                         pos1++;
                     }
 
+                    ClearBoard(pos1, pos2, speelBord);
+
                     if (gameSelected != "Schuif")
                     { 
                       if (ButtonPressed == ConsoleKey.Enter)
@@ -113,7 +118,6 @@ public static class Minigames
                       }  
                     }
 
-                    ClearBoard(pos1, pos2, speelBord);
 
                     char oldPositionVal = speelBord[pos1, pos2];
 
@@ -144,6 +148,7 @@ public static class Minigames
                     Console.Write($" {pos1},{pos2}");
                     if (HasPlayerWon('X', speelBord))
                     {
+                        Entity.CheckLevelUpAndSetNextMilestone(PlayerChoices.Player, Puzzel); 
                         Console.WriteLine(" Je hebt geleerd van deze puzzel");
                         Thread.Sleep(2000);
                         i = 4;
@@ -151,7 +156,7 @@ public static class Minigames
                         break;
                     }
 
-                }
+                }// while loop eindigt hiet
                 speelBord[pos1, pos2] = 'X';
                 PrintBord(speelBord);
 
@@ -160,7 +165,7 @@ public static class Minigames
             { 
                 if (HasPlayerWon('X', speelBord))
                 {
-                    Console.WriteLine(" Je hebt gewonnen!");
+                    Entity.CheckLevelUpAndSetNextMilestone(PlayerChoices.Player, Puzzel);
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;
@@ -178,6 +183,7 @@ public static class Minigames
 
                 if (HasPlayerWon('Y', speelBord))
                 {
+
                     Console.WriteLine(" Je hebt verloren");
                     Thread.Sleep(2000);
                     i = 4;
@@ -240,16 +246,17 @@ public static class Minigames
         {
             for (int j = 0; j < spelbord.GetLength(1); j++)
             {
-                if (spelbord[i, j] != '?')
+                if (spelbord[i, j] == '?' || spelbord[i, j] == 'S')
                 {
-                    if (spelbord[i, j] != 'S')
-                    { 
-                      counter++;  
-                    }
+                    continue;
+                }
+                else
+                { 
+                  counter++;
                 }
             }
         }
-        if (counter == 9)
+        if (counter >= 9)
         {
             return true;
         }

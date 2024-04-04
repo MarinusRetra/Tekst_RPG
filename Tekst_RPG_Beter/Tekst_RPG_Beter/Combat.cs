@@ -82,7 +82,7 @@ public static class Combat
         {
             PlayerChoices.menu = false;
             Console.Clear();
-            Console.WriteLine("You died");
+            Console.WriteLine("You stierf");
             Console.ReadLine();
             Environment.Exit(0);
         }

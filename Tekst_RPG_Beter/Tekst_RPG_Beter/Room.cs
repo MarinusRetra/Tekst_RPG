@@ -15,7 +15,6 @@ public class Room
 	public static List<string> roomDescriptionsPrisonPeople = new List<string>() { };
     public static List<string> roomDescriptionsForestPeople = new List<string>() { };
 
-
     public Room(bool _Encounter, string _roomDescription)
 	{
 		roomDescription = _roomDescription;

@@ -74,7 +74,7 @@ public class Entity
 		    user = new Entity(user.Klass, user.Race, user.maxHealth, user.Damage, user.Level, user.Name);
 			// maakt een nieuwe speler zodat de code in de constructor opnieuw wordt uitgevoerd, dit is nodig omdat daar de extra stats die je krijgt van
 			// een level up in de constructor toegevoegd worden.
-		    Instelbaar.Print($"You leveled up! \nNew Level: {user.Level} \nNew MaxHP: {user.maxHealth} \nNew Damage: {user.Damage}");
+		    Instelbaar.Print($"Level up! \nNew Level: {user.Level} \nNew MaxHP: {user.maxHealth} \nNew Damage: {user.Damage}");
 			// print je nieuwe stats naar de console
 		}
     }
