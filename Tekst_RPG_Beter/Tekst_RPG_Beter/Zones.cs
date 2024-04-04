@@ -47,8 +47,8 @@
         Room.roomDescriptionsPrisonPeople.Add("You have found yourself in the guard's lounge where an orc is reading 'What to do in case of an escape attempt for dummies'.");
         PrisonPeople.Add(new Entity("Gunslinger", "Elf", 70, 30, 4, "Elf Guard")); // 9
         Room.roomDescriptionsPrisonPeople.Add("You see a guard standing guard at the contraband desk, even though the room is locked and no one can get in, despite this the guard looks quite serious.");
-        PrisonPeople.Add(new Entity("Fighter", "Orc", 250, 30, 8, "Warden")); // 10
-        Room.roomDescriptionsPrisonPeople.Add("The exit!                \nOne problem the warden seems to be blocking your way through.He is the only thing standing between you and the outside.");
+        PrisonPeople.Add(new Entity("Fighter", "Orc", 250, 30, 8, "The Warden")); // 10
+        Room.roomDescriptionsPrisonPeople.Add("The exit!                \nOne problem the warden seems to be blocking your way through. He is the only thing standing between you and the outside world.");
 
         
         //tweede zone

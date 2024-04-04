@@ -1,115 +1,13 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace Tekst_RPG_Beter
+﻿namespace Tekst_RPG_Beter
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-          PlayerChoices.Selector("Start", "Options", "Quit", 0, typeof(PlayerChoices));
-          GoThroughPrisonRooms();
-          GoThroughForestRooms();
+            PlayerChoices.Selector("Start", "Options", "Quit", 0, typeof(PlayerChoices));
+            Room.GoThroughPrisonRooms();
+            Room.GoThroughForestRooms();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        static void GoThroughPrisonRooms()
-        { 
-          var room = Room.StartRoom();
-          List<Room> InsertRooms = room.RandomRooms(Zones.PrisonPeople, 70);
-          
-          foreach (Room kamer in InsertRooms)
-          {
-              if (kamer.Encounter)
-              {
-                    if (kamer.Enemy.Health > 0)
-                    {
-                        Console.Clear();
-                        Instelbaar.Print(kamer.roomDescription);
-                        Console.ReadLine();
-                        Combat.StartCombat(kamer.Enemy);
-                    }
-                    else
-                        continue;
-              }
-              else
-              {
-                  Console.Clear();
-                  Instelbaar.Print(kamer.roomDescription);
-                  Console.ReadLine();
-                  Room.PickEvent(Zones.PrisonPeople);
-              }    
-          }
-          Console.Clear();
-          Instelbaar.Print("You hear heavy footsteps further down the hall");
-          Console.ReadLine();
-          Console.Clear();
-          Instelbaar.Print(Room.roomDescriptionsPrisonPeople.Last());
-          Console.ReadLine();
-          Combat.StartCombat(Zones.PrisonPeople.Last());
-
-        }
-        static void GoThroughForestRooms()
-        {
-            var room = Room.StartRoom();
-            List<Room> InsertRooms = room.RandomRooms(Zones.ForestPeople, 70);
-
-            foreach (Room kamer in InsertRooms)
-            {
-                if (kamer.Encounter)
-                {
-                    if (kamer.Enemy.Health > 0)
-                    {
-                        Console.Clear();
-                        Instelbaar.Print(kamer.roomDescription);
-                        Console.ReadLine();
-                        Combat.StartCombat(kamer.Enemy);
-                    }
-                    else
-                        continue;
-                }
-                else
-                {
-                    Console.Clear();
-                    Instelbaar.Print(kamer.roomDescription);
-                    Console.ReadLine();
-                    Room.PickEvent(Zones.ForestPeople);
-                }
-            }
-            Console.Clear();
-            Instelbaar.Print("An elf warrior approaches");
-            Console.ReadLine();
-            Console.Clear();
-            Instelbaar.Print(Room.roomDescriptionsForestPeople.Last());
-            Console.ReadLine();
-            Combat.StartCombat(Zones.ForestPeople.Last());
-        }
     }
 }

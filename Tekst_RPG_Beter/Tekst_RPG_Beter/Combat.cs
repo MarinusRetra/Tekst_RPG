@@ -3,7 +3,6 @@ using Tekst_RPG_Beter;
 
 public static class Combat
 {
-
     public static int Give_XP { get; set; }
 
     static Random random = new Random();
@@ -20,6 +19,10 @@ public static class Combat
 
     public static void StartCombat(Entity opponent)
     {
+        if (Player.Health <= Player.maxHealth - Player.maxHealth / 100 * 25)//de speler healt voor elke combat die gestart is terwijl de player minimaal 25 procent hp mist
+        {
+            Player.Health += Player.maxHealth / 100 * 25;
+        }
         isPlayerTurn = true;
         Player.SkillCD = 0;
         Enemy = opponent;
@@ -90,7 +93,7 @@ public static class Combat
         if (Enemy.Health <= 0)
         {
             PlayerChoices.menu = false;
-            Entity.CheckLevelUpAndSetNextMilestone(Player, Enemy);
+            Entity.CheckLevelUpAndSetNextMilestone(Enemy);
             Zones.FindList(Enemy, Zones.listList).Remove(Enemy);
             Console.ReadLine();
         }
@@ -121,25 +124,25 @@ public static class Combat
                 {
                     // doe twee attacks in 1 beurt
                     case "Gunslinger": 
+                        user.SkillCD = 3;
                         Attack(user, target, false);
                         Thread.Sleep(700);
                         Attack(user, target, false);
                         ShowCombatStat();
-                        user.SkillCD = 3;
                     break;
 
                     // geeft 50% van je maximum health terug en je valt aan
                     case "Samurai":
                         user.Health += user.maxHealth / 2;
-                        Attack(user, target);
                         user.SkillCD = 4;
+                        Attack(user, target);
                     break;
 
                     // Reflecteer de enemy skill als die gebruikt wordt na jouw beurt
                     case "Fighter": 
+                        user.SkillCD = 2;
                         user.Deflecting = true;
                         ShowCombatStat();
-                        user.SkillCD = 2;
                     break;
                 }
             }
@@ -149,23 +152,23 @@ public static class Combat
                 switch (user.Klass) 
                 {
                     case "Gunslinger":
-                        Attack(user, user, false);
-                        //Thread.Sleep(1000);
-                        Attack(user, user, false);
                         user.SkillCD = 3;
+                        Attack(user, user, false);
+                        Thread.Sleep(700);
+                        Attack(user, user, false);
                     break;
 
                     case "Samurai":
+                        user.SkillCD = 4;
                         user.Health -= user.maxHealth / 2; 
                         ShowCombatStat();
-                        user.SkillCD = 4;
                     break;
 
                     case "Fighter":
-                        Console.WriteLine("Both of stand ready to counterattack. Nothing Happens");
-                        ShowCombatStat();
                         user.SkillCD = 2;
                         target.SkillCD = 2;
+                        Console.WriteLine("Both of stand ready to counterattack. Nothing Happens");
+                        ShowCombatStat();
                     break;
 
                     default:

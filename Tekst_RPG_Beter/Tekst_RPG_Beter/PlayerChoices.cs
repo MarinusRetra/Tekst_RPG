@@ -3,7 +3,7 @@ using Tekst_RPG_Beter;
 
 public static class PlayerChoices
 {
-    public static Entity Player = new Entity("", "", 200, 200, 0, "");
+    public static Entity Player = new Entity("", "", 200, 30, 0, "");
     public static bool menu = true;
 
     /// <summary>

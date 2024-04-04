@@ -29,7 +29,15 @@ public static class Minigames
     public static void BoterKaas(string gameSelected = "")
     {
         Entity Puzzel = new Entity();
-        Puzzel.Name = "Puzzel";
+        if (gameSelected != "Schuif")
+        {
+            Puzzel.Name = "Je Tegenstander";
+        }
+        else
+        {
+            Puzzel.Name = "Puzzel";
+        }
+
         Puzzel.XP_To_Give = 300 * PlayerChoices.Player.Level; // zet het xp wat de puzzel geeft op dezelfde waarde die speler nodig heeft om een level omhoog te gaan
         Console.CursorVisible = false;
         int pos1 = 0;
@@ -148,11 +156,12 @@ public static class Minigames
                     Console.Write($" {pos1},{pos2}");
                     if (HasPlayerWon('X', speelBord))
                     {
-                        Entity.CheckLevelUpAndSetNextMilestone(PlayerChoices.Player, Puzzel); 
-                        Console.WriteLine(" Je hebt geleerd van deze puzzel");
-                        Thread.Sleep(2000);
+                        Console.WriteLine("Puzzel opgelost!");
+                        Thread.Sleep(1000);
                         i = 4;
                         j = 4;
+                        Entity.CheckLevelUpAndSetNextMilestone(Puzzel);
+                        Console.ReadLine();
                         break;
                     }
 
@@ -165,10 +174,12 @@ public static class Minigames
             { 
                 if (HasPlayerWon('X', speelBord))
                 {
-                    Entity.CheckLevelUpAndSetNextMilestone(PlayerChoices.Player, Puzzel);
-                    Thread.Sleep(2000);
+                    Console.WriteLine("Je hebt gewonnen!");
+                    Thread.Sleep(1000);
                     i = 4;
                     j = 4;
+                    Entity.CheckLevelUpAndSetNextMilestone(Puzzel);
+                    Console.ReadLine();
                     break;
                 }
                 else if (FullBoard(speelBord))

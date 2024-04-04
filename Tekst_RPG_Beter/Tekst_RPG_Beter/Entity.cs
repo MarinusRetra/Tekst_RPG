@@ -34,16 +34,16 @@ public class Entity
 		switch (race)
 		{
 			case "Mens":
-				levelBooster = new List<int>() { 15, 5 ,3}; // balanced 
+				levelBooster = new List<int>() { 15, 4}; // balanced 
 				break;
 			case "Orc":
-				levelBooster = new List<int>() { 25, 3 , 1}; // veel hp minder damage lage critChance
+				levelBooster = new List<int>() { 25, 3}; // veel hp minder damage
 				break;
 			case "Elf":
-				levelBooster = new List<int>() { 10, 6 , 5}; // laag hp veel damage, hoogste critChance
+				levelBooster = new List<int>() { 10, 5}; // laag hp veel damage
 				break;
 			default:
-				levelBooster = new List<int>() { 30, 7, 6 }; // hoogste in alles mischien komt er een secret boss of zoiets
+				levelBooster = new List<int>() { 30, 7};
 				break;
 		}
 
@@ -61,20 +61,20 @@ public class Entity
 		HasLoot = ran.Next(5) == 0; // 1/5 voor 0. Als 0 doe HasLoot true
 	}
 
-	public static void CheckLevelUpAndSetNextMilestone(Entity user, Entity EnemyDefeated)
+	public static void CheckLevelUpAndSetNextMilestone(Entity EnemyDefeated)
 	{
         Console.Clear();
-        user.XP += EnemyDefeated.XP_To_Give; // voegt enemy xp to give aan de speler
-        int milestoneXP = 300 * user.Level; // zet de benodigde xp voor het volgende level
+        PlayerChoices.Player.XP += EnemyDefeated.XP_To_Give; // voegt enemy xp to give aan de speler
+        int milestoneXP = 300 * PlayerChoices.Player.Level; // zet de benodigde xp voor het volgende level
         Console.WriteLine($"{EnemyDefeated.Name} is verslagen! + {EnemyDefeated.XP_To_Give}XP / {milestoneXP}"); // vertelt hoeveel xp je nog nodig hebt
 
-		if (user.XP >= milestoneXP) // als je over de milestoneXP zit dan ga je een level omhoog
+		if (PlayerChoices.Player.XP >= milestoneXP) // als je over de milestoneXP zit dan ga je een level omhoog
 		{
-			user.Level++;
-		    user = new Entity(user.Klass, user.Race, user.maxHealth, user.Damage, user.Level, user.Name);
+			PlayerChoices.Player.Level++;
+		    PlayerChoices.Player = new Entity(PlayerChoices.Player.Klass, PlayerChoices.Player.Race, PlayerChoices.Player.maxHealth, PlayerChoices.Player.Damage, PlayerChoices.Player.Level, PlayerChoices.Player.Name);
 			// maakt een nieuwe speler zodat de code in de constructor opnieuw wordt uitgevoerd, dit is nodig omdat daar de extra stats die je krijgt van
 			// een level up in de constructor toegevoegd worden.
-		    Instelbaar.Print($"Level up! \nNew Level: {user.Level} \nNew MaxHP: {user.maxHealth} \nNew Damage: {user.Damage}");
+		    Instelbaar.Print($"Level up! \nNew Level: {PlayerChoices.Player.Level} \nNew MaxHP: {PlayerChoices.Player.maxHealth} \nNew Damage: {PlayerChoices.Player.Damage}");
 			// print je nieuwe stats naar de console
 		}
     }
