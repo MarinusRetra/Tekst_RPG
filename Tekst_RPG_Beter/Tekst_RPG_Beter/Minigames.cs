@@ -144,7 +144,7 @@ public static class Minigames
                     Console.Write($" {pos1},{pos2}");
                     if (HasPlayerWon('X', speelBord))
                     {
-                        Console.WriteLine("Je hebt gewonnen!");
+                        Console.WriteLine(" Je hebt geleerd van deze puzzel");
                         Thread.Sleep(2000);
                         i = 4;
                         j = 4;
@@ -160,7 +160,7 @@ public static class Minigames
             { 
                 if (HasPlayerWon('X', speelBord))
                 {
-                    Console.WriteLine("Je hebt gewonnen!");
+                    Console.WriteLine(" Je hebt gewonnen!");
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;
@@ -168,7 +168,7 @@ public static class Minigames
                 }
                 else if (FullBoard(speelBord))
                 {
-                    Console.WriteLine("Bord is vol");
+                    Console.WriteLine(" Bord is vol niemand wint");
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;
@@ -178,7 +178,7 @@ public static class Minigames
 
                 if (HasPlayerWon('Y', speelBord))
                 {
-                    Console.WriteLine("Je hebt Verloren");
+                    Console.WriteLine(" Je hebt verloren");
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;
@@ -186,7 +186,7 @@ public static class Minigames
                 }
                 else if (FullBoard(speelBord))
                 {
-                    Console.WriteLine("Bord is vol");
+                    Console.WriteLine(" Bord is vol niemand wint");
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;

@@ -1,4 +1,6 @@
-﻿public class Room
+﻿using System.Diagnostics.Contracts;
+
+public class Room
 {
 	public string roomDescription { get; set; } // description voor de player 
 	public bool Encounter { get; set; } // dit checkt of een kamer een encounter heeft
@@ -7,7 +9,9 @@
 	static Random random = new Random();
 
 	//public  List<string> roomDescriptionsEncounter = new List<string>() {"Yo", "Hoi", "Description"};
-	public List<string> roomDescriptionsSafe = new List<string>() { "SafeRoom1", "SafeRoom2", "SafeRoom3" };
+	public List<string> roomDescriptionsSafePrison = new List<string>() { "While making your way through the prison you see a small puzzle engraved on one of the walls.", "While waiting for some guards to pass. you see a small puzzle on the floor, you decide to your hand at solving it. ", "You search one of the lockers in the guards changing area. In one of the lockers lies a small puzzle"};
+	public List<string> roomDescriptionsSafeForest = new List<string>() { "You run into a an old couple playing board games in their backyard. They seem friendly, you decide to join them for a game", "A magical board is engraved inside the trunk of a tree, it looks like a game.", "An old automaton used for playing board games lies dormant against a tree, You try to play it for a game"};
+
 	public static List<string> roomDescriptionsPrisonPeople = new List<string>() { };
     public static List<string> roomDescriptionsForestPeople = new List<string>() { };
 
@@ -75,9 +79,16 @@
             else
 			{ 
 			    kamer.Encounter = false;
-				kamer.roomDescription = roomDescriptionsSafe[random.Next(0, roomDescriptionsSafe.Count)];
+				if (Zone == Zones.PrisonPeople)
+				{
+					kamer.roomDescription = roomDescriptionsSafePrison[random.Next(0, roomDescriptionsSafePrison.Count)];
+				
+				}
+				else
+					kamer.roomDescription = roomDescriptionsSafeForest[random.Next(4, roomDescriptionsSafeForest.Count)];
+
             }
-			RoomsList.Add(kamer);
+            RoomsList.Add(kamer);
         }
 		return RoomsList;
 	}
