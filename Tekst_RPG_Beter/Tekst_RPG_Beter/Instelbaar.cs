@@ -56,4 +56,10 @@ public class Instelbaar
         Console.Clear();
         PlayerChoices.Selector("Start", "Options", "Quit", 0, typeof(PlayerChoices));
     }
+
+    public static void Back()
+    {
+        Console.Clear();
+        PlayerChoices.Selector("Start", "Options", "Quit", 0, typeof(PlayerChoices));
+    }
 }

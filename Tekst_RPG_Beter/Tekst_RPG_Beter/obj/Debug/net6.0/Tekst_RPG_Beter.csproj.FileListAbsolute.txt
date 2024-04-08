@@ -42,3 +42,18 @@ C:\Users\Marinus\Desktop\OOP\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug
 C:\Users\Marinus\Desktop\OOP\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.pdb
 C:\Users\Marinus\Desktop\OOP\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.genruntimeconfig.cache
 C:\Users\Marinus\Desktop\OOP\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\ref\Tekst_RPG_Beter.dll
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\bin\Debug\net6.0\Tekst_RPG_Beter.exe
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\bin\Debug\net6.0\Tekst_RPG_Beter.deps.json
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\bin\Debug\net6.0\Tekst_RPG_Beter.runtimeconfig.json
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\bin\Debug\net6.0\Tekst_RPG_Beter.dll
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\bin\Debug\net6.0\Tekst_RPG_Beter.pdb
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.AssemblyInfoInputs.cache
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.AssemblyInfo.cs
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.csproj.CoreCompileInputs.cache
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.sourcelink.json
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.dll
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\refint\Tekst_RPG_Beter.dll
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.pdb
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\Tekst_RPG_Beter.genruntimeconfig.cache
+C:\Users\marin\Desktop\Projecten\Jaar 2\C#\Tekst-RPG\Tekst_RPG\Tekst_RPG_Beter\Tekst_RPG_Beter\obj\Debug\net6.0\ref\Tekst_RPG_Beter.dll

@@ -128,6 +128,8 @@ public class Room
         Instelbaar.Print(Room.roomDescriptionsPrisonPeople.Last());
         Console.ReadLine();
         Combat.StartCombat(Zones.PrisonPeople.Last());
+        Instelbaar.Print("As you set foot outside outside the prison you find yourself standing in a lush forest.");
+
 
     }
     public static void GoThroughForestRooms()

@@ -62,7 +62,12 @@ public static class Combat
                 break;
 
                 case 2:
-                    Guard(Enemy);
+                    if (Enemy.PotionAmount > 0)
+                    {
+                        DrinkPotion(Enemy);
+                    }
+                    else
+                        Attack(Enemy, Player);
                 break;
 
                 case 3:
@@ -189,31 +194,31 @@ public static class Combat
         ShowCombatStat();
     }
 
-    public static void Guard(Entity user)
+    public static void DrinkPotion(Entity user)
     {
-        Console.SetCursorPosition(0, 7);
-        Console.WriteLine($"{user.Name} verdedigd");
-        Thread.Sleep(1000);
-        if (ReferenceEquals(Player, user))
+        if (user.PotionAmount > 0)
         {
-            user.Health += user.maxHealth / 4;
+            Console.SetCursorPosition(0, 7);
+            Console.WriteLine($"{user.Name} drinks a potion");
+            user.Health += user.maxHealth / 2;
+            user.PotionAmount--;
+            Thread.Sleep(1000);
+            ShowCombatStat();
         }
-        else 
+        else
         {
-            user.Health += user.maxHealth / 6;
+            Console.Write("You're out of potions");
         }
-        ShowCombatStat();
-        //de speler krijgt meer health per guard actie, dit is zodat de enemy niet sneller kan healen dan de speler en een onmogelijke battle maakt
     }
 
     /// <summary>
-    /// Geeft alle stats die de player moet zien tijdens combat op het scherm en wisselt de beurt.
+    /// Geeft alle stats en tekst die de player moet zien tijdens combat op het scherm en wisselt de beurt.
     /// </summary>
     public static void ShowCombatStat(bool swapTurn = true)
     {
         Console.Clear();
         Console.SetCursorPosition(0, 0);
-        Console.WriteLine("Attack\nGuard\nSkill");
+        Console.WriteLine($"Attack\nDrinkPotion[{PlayerChoices.Player.PotionAmount}]\nSkill");
         Console.SetCursorPosition(0, 4);
         Console.WriteLine($"Level {Enemy.Level} {Enemy.Name} : Health {Enemy.Health}");
         Console.WriteLine($"{Player.Name} : Health {Player.Health} : SkillCD {Player.SkillCD}");

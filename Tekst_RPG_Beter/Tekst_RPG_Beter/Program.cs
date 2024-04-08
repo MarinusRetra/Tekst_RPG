@@ -5,8 +5,6 @@
         static void Main(string[] args)
         {
             PlayerChoices.Selector("Start", "Options", "Quit", 0, typeof(PlayerChoices));
-            Room.GoThroughPrisonRooms();
-            Room.GoThroughForestRooms();
         }
 
     }

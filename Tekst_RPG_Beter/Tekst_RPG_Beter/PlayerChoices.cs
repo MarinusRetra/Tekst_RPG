@@ -1,9 +1,10 @@
 ﻿using System.Reflection;
 using Tekst_RPG_Beter;
+using System;
 
 public static class PlayerChoices
 {
-    public static Entity Player = new Entity("", "", 200, 30, 0, "");
+    public static Entity Player = new Entity("", "", 150, 30, 0, "");
     public static bool menu = true;
 
     /// <summary>
@@ -123,37 +124,40 @@ public static class PlayerChoices
     public static void Start()//Startmenu keuze 
     {
         Console.Clear();
-        Instelbaar.Print($"Dit is het verhaal van: ",false);
-        Player.Name = Console.ReadLine().ToString();
+        Instelbaar.Print($"This is the story of: ",false);
+        Player.Name = Console.ReadLine();
+        Player.Name = string.IsNullOrEmpty(Player.Name) ? "Nameless Warrior" : Player.Name;
 
-        Instelbaar.Print($"{Player.Name} is een ");
+        Instelbaar.Print($"{Player.Name} is an");
         Console.WriteLine();
 
-        Selector("Orc", "Elf", "Mens", 3, typeof(Entity));
+        Selector("Orc", "Elf", "Human", 3, typeof(Entity));
 
         Console.Clear();
-        Instelbaar.Print($"Natuurlijk is {Player.Name} {"de"} {Player.Race.ToLower()} {"een: "} ");
+        Instelbaar.Print($"Of course {Player.Name} {"the"} {Player.Race.ToLower()} {"is a: "} ");
         Console.WriteLine();
 
         Selector("Gunslinger", "Fighter", "Samurai", 2, typeof(Entity));
         Console.Clear();
-        Instelbaar.Print($"{Player.Name} {Player.Race.ToLower()} {Player.Klass.ToLower()} klint goed");
+        Instelbaar.Print($"{Player.Name} {Player.Race.ToLower()} {Player.Klass.ToLower()}, perfect");
         Thread.Sleep(800);
-        Instelbaar.Print("Dat was alles veel plezier");
-        Thread.Sleep(1200);
+        Instelbaar.Print("That was all, good luck!");
+        Thread.Sleep(800);
         Console.Clear();
 
-        Instelbaar.Print($"{Player.Name}. Tijdens een bank overval werdt je betrapt en nu zit je vast. \nNa maanden graven heb je een geheime gang net buiten je cel kunnen graven.\nJe besluit om:");
+        Instelbaar.Print($"{Player.Name}. During a bank robbery you got caught and are now in prison. \nAfter months of digging you made yourself a small tunnel that leads into the hallway just outside your cell.\nYou decide to:");
         Console.WriteLine();
-        Selector("De tunnel in te gaan", "Een sleutel proberen te stelen", "Opnieuw te beginnen", 4, typeof(PlayerChoices)); // eerste playerkeuze
+        Selector("Enter the tunnel", "Try to steal a key", "Restart", 4, typeof(PlayerChoices)); // eerste playerkeuze
 
         Console.ReadLine();
+        Room.GoThroughPrisonRooms();
+        Room.GoThroughForestRooms();
     }
 
     public static void Options()//Startmenu keuze
     {
         Console.Clear();
-        Selector("SetTekstSpeed","SetDifficulty","SetTekstSpeed",0, typeof(Instelbaar));
+        Selector("SetTekstSpeed","SetDifficulty","Back",0, typeof(Instelbaar));
     }
 
     public static void Quit()//Startmenu keuze
@@ -165,23 +169,23 @@ public static class PlayerChoices
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    public static void Detunnelintegaan()// eerste player keuze
+    public static void Enterthetunnel()// eerste player keuze
     {
         Console.Clear();
-        Instelbaar.Print("Je besluit de tunnel in te gaan en komt nu midden in de gang uit. Een bewaker ziet je staan en hij komt op je af!.");
+        Instelbaar.Print("You crawl through the small hole in the ground and end up in the middle of the hallway between cells. A guard saw you escape and is rapidly approuching you!.");
         Console.ReadLine();
         Combat.StartCombat(Zones.StartEnemies[0]);
     }
 
-    public static void Eensleutelproberentestelen()// eerste player keuze
+    public static void Trytostealakey()// eerste player keuze
     {
         Console.Clear();
-        Instelbaar.Print("Je komt stilletjes dichter bij de deur, waar de bewaker staat en  cel bewaker en pakt door de tralies heen zijn sleutelbos van zijn riem af. \nJe gebruikt de sleutels om de deur te openen en de bewaker te verassen");
+        Instelbaar.Print("You sneakily get closer to the cell bars until you're in range to free the guards key from his belt. \nYou use the key to release yourself and take the gaurd by surprise");
         Console.ReadLine();
         Combat.StartCombat(Zones.StartEnemies[1]);
     }
 
-    public static void Opnieuwtebeginnen()// eerste player keuze
+    public static void Restart()// eerste player keuze
     {
         Console.Clear();
         Start();
