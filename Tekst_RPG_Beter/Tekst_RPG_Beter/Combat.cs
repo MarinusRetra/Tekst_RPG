@@ -34,7 +34,7 @@ public static class Combat
             Player.Deflecting = false;
             Console.Clear();
             ShowCombatStat(false);
-            PlayerChoices.Selector("Attack", "Guard", "Use Skill", 0, typeof(Combat));
+            PlayerChoices.Selector("Attack", $"DrinkPotion[{Player.PotionAmount}]", "Use Skill", 0, typeof(Combat));
             if (Player.SkillCD > 0)
             { 
                 Player.SkillCD--;
@@ -54,16 +54,17 @@ public static class Combat
             {
                 select = 3;
             }
-            
+
             switch (select)
             {
                 case 1:
                     Attack(Enemy, Player);
-                break;
+                    break;
 
                 case 2:
-                    if (Enemy.PotionAmount > 0)
-                    {
+
+                    if (Enemy.PotionAmount > 0 && Enemy.Health > Enemy.maxHealth / 2)
+                    {// drinkt alleen een potion als er nog potions zijn en als health minder is dan maxhealth / 2
                         DrinkPotion(Enemy);
                     }
                     else
@@ -98,6 +99,13 @@ public static class Combat
         if (Enemy.Health <= 0)
         {
             PlayerChoices.menu = false;
+            if (Enemy.PotionAmount > 0)
+            {
+                Console.Clear();
+                Instelbaar.Print("You defeated the enemy before they could use their potion!\n +1 Potion");
+                Player.PotionAmount++;
+                Console.ReadLine();
+            }
             Entity.CheckLevelUpAndSetNextMilestone(Enemy);
             Zones.FindList(Enemy, Zones.listList).Remove(Enemy);
             Console.ReadLine();
@@ -138,7 +146,7 @@ public static class Combat
 
                     // geeft 50% van je maximum health terug en je valt aan
                     case "Samurai":
-                        user.Health += user.maxHealth / 2;
+                        user.Health += user.maxHealth / 3;
                         user.SkillCD = 4;
                         Attack(user, target);
                     break;
@@ -161,11 +169,12 @@ public static class Combat
                         Attack(user, user, false);
                         Thread.Sleep(700);
                         Attack(user, user, false);
+                        ShowCombatStat(false);
                     break;
 
                     case "Samurai":
                         user.SkillCD = 4;
-                        user.Health -= user.maxHealth / 2; 
+                        user.Health -= user.maxHealth / 3;
                         ShowCombatStat();
                     break;
 

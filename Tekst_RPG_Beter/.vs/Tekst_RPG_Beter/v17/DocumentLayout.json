@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +11,16 @@
       "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\playerchoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|solutionrelative:tekst_rpg_beter\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B967F33-7591-4832-96A6-AFE3B7C32AAE}|Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj|c:\\users\\marin\\desktop\\projecten\\jaar 2\\c#\\tekst-rpg\\tekst_rpg\\tekst_rpg_beter\\tekst_rpg_beter\\minigames.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,33 +54,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "PlayerChoices.cs",
               "DocumentMoniker": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\PlayerChoices.cs",
               "RelativeDocumentMoniker": "Tekst_RPG_Beter\\PlayerChoices.cs",
               "ToolTip": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\PlayerChoices.cs",
               "RelativeToolTip": "Tekst_RPG_Beter\\PlayerChoices.cs",
-              "ViewState": "AQIAAJAAAAAAAAAAAAAYwAYAAABFAAAA",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAQwI4AAABbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T18:38:39.754Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Entity.cs",
               "RelativeDocumentMoniker": "Tekst_RPG_Beter\\Entity.cs",
               "ToolTip": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Entity.cs",
               "RelativeToolTip": "Tekst_RPG_Beter\\Entity.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAswBkAAAAAAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAA6wC8AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T18:38:39.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Program.cs",
               "RelativeDocumentMoniker": "Tekst_RPG_Beter\\Program.cs",
@@ -93,13 +93,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Combat.cs",
               "DocumentMoniker": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Combat.cs",
               "RelativeDocumentMoniker": "Tekst_RPG_Beter\\Combat.cs",
               "ToolTip": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Combat.cs",
               "RelativeToolTip": "Tekst_RPG_Beter\\Combat.cs",
-              "ViewState": "AQIAAMMAAAAAAAAAAAAowMoAAAAuAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAqwGcAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T18:38:39.744Z",
               "EditorCaption": ""
@@ -114,8 +114,7 @@
               "RelativeToolTip": "Tekst_RPG_Beter\\Instelbaar.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAYwDoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-07T18:38:39.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-07T18:38:39.749Z"
             },
             {
               "$type": "Document",
@@ -131,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Room.cs",
               "DocumentMoniker": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Room.cs",
               "RelativeDocumentMoniker": "Tekst_RPG_Beter\\Room.cs",
@@ -139,8 +138,7 @@
               "RelativeToolTip": "Tekst_RPG_Beter\\Room.cs",
               "ViewState": "AQIAAGMAAAAAAAAAAAAhwHIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-07T18:38:39.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-07T18:38:39.764Z"
             },
             {
               "$type": "Document",
@@ -152,8 +150,7 @@
               "RelativeToolTip": "Tekst_RPG_Beter\\Minigames.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAYwB0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-07T18:38:39.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-07T18:38:39.738Z"
             }
           ]
         }

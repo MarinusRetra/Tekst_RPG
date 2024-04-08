@@ -1,17 +1,18 @@
-﻿using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Xml.Linq;
-using Tekst_RPG_Beter;
-
-public class Entity
+﻿public class Entity
 {
+
+	private int health;
 	static Random ran = new Random();
 
     public int maxHealth;
 	public bool Deflecting { get; set; }
 	public string Name { get; set; }
-	public int Health { get; set; }
+	public int Health {
+		get { return health; }
+		
+		set { health = Math.Min(value, maxHealth);  }
+		// de set pakt altijd het laagste getal tussen 0 en maxhealth, als je een hogere value hebt dan maxHealht capped het op maxHealth
+	}
 	public int Damage { get; set; }
 	public int Level { get; set; }
 	public int XP { get; set; }
@@ -48,8 +49,8 @@ public class Entity
 		Name = name;
 		Race = race;
 		Klass = klass;
-		Health = healthIn + (levelBooster[0] * Level);
-		maxHealth = Health;
+		maxHealth = healthIn + (levelBooster[0] * Level);
+		health = maxHealth;
 		Damage = damageIn + (levelBooster[1] * Level);
 		SkillCD = 0;
 		XP = 0;

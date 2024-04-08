@@ -8,15 +8,21 @@ public static class PlayerChoices
     public static bool menu = true;
 
     /// <summary>
-    /// Pakt de functies met dezelfde naam als de eerste drie parameters en maakt hier een klein menu van
+    /// Pakt de functies met dezelfde naam als de eerste drie parameters en maakt hier een klein menu van.
+    /// Reset als de gebruiker probeert te typen
     /// </summary>
     /// <param name="function1"> Naam van functie als string</param>
     /// <param name="function2"> Naam van functie als string</param>
     /// <param name="function3"> Naam van functie als string</param>
-    /// <param name="cursorStart"> De begin locatievan de cursor</param>
+    /// <param name="cursorStart"> De begin locatie van de cursor Y positie</param>
     /// <param name="insertType"> Een reference naar de class waarvan je de functies wilt gebruiken: typeof(Class naam)</param>
     public static void Selector(string function1, string function2, string function3, int cursorStart, Type insertType)
     {
+    NoPrint:
+        if (Combat.Enemy != null)
+        {
+            Combat.ShowCombatStat(false);
+        }
         Console.CursorVisible = true;
         Instelbaar.Print(function1);
         Instelbaar.Print(function2);
@@ -46,6 +52,12 @@ public static class PlayerChoices
         while (menu == true)
         {
             ConsoleKey read = Console.ReadKey().Key;
+            if (read != ConsoleKey.Enter && read != ConsoleKey.UpArrow && read != ConsoleKey.DownArrow)
+            {// reset als er een knop los van enter pijl omhoog of pijl omlaag ingedrukt wordt
+                Console.Clear();
+                goto NoPrint;
+            }
+
 
             MethodInfo method1 = insertType.GetMethod(function1);// dit pakt de functie met dezelfde naam als de string paramater function 1
             MethodInfo method2 = insertType.GetMethod(function2);// dit pakt ook de functie met dezelfde naam als de string paramater function 2
@@ -86,7 +98,7 @@ public static class PlayerChoices
             // en met Y van de cursor positie kiest hij welke van de drie geselecteerd is
             {
                 switch (trueSelected)// invoked de method op basis van welke string geselecteerd is
-                {
+                { // de if statements in de switch cases zijn voor specifieke functies die parameters doorgeven
                     case (0):
                         if (function1 == "Attack")
                         { 
@@ -96,8 +108,10 @@ public static class PlayerChoices
                             method1.Invoke(null, null);
                     break;
                     case (1):
-                        if (function2 == "Guard")
+                        if (function2 == $"DrinkPotion[{Player.PotionAmount}]")
                         {
+                            function2 = "DrinkPotion";
+                            method2 = insertType.GetMethod("DrinkPotion");
                             method2.Invoke(null, new object[] { Player });
                         }
                         else
@@ -139,9 +153,9 @@ public static class PlayerChoices
 
         Selector("Gunslinger", "Fighter", "Samurai", 2, typeof(Entity));
         Console.Clear();
-        Instelbaar.Print($"{Player.Name} {Player.Race.ToLower()} {Player.Klass.ToLower()}, perfect");
+        Instelbaar.Print($"{Player.Name} the {Player.Race.ToLower()} {Player.Klass.ToLower()}, sounds good");
         Thread.Sleep(800);
-        Instelbaar.Print("That was all, good luck!");
+        Instelbaar.Print("That's all, good luck!");
         Thread.Sleep(800);
         Console.Clear();
 
