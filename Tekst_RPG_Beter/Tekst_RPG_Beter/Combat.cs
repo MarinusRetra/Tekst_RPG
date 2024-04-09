@@ -33,7 +33,7 @@ public static class Combat
         {
             Player.Deflecting = false;
             Console.Clear();
-            ShowCombatStat(false);
+            //ShowCombatStat(false);
             PlayerChoices.Selector("Attack", $"DrinkPotion[{Player.PotionAmount}]", "Use Skill", 0, typeof(Combat));
             if (Player.SkillCD > 0)
             { 
@@ -165,11 +165,12 @@ public static class Combat
                 switch (user.Klass) 
                 {
                     case "Gunslinger":
-                        user.SkillCD = 3;
                         Attack(user, user, false);
                         Thread.Sleep(700);
                         Attack(user, user, false);
-                        ShowCombatStat(false);
+                        ShowCombatStat();
+                        user.SkillCD = 3;
+
                     break;
 
                     case "Samurai":

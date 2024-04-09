@@ -32,13 +32,13 @@
 		switch (race)
 		{
 			case "Human":
-				levelBooster = new List<int>() { 15, 4}; // balanced 
+				levelBooster = new List<int>() { 6, 3}; // balanced 
 				break;
 			case "Orc":
-				levelBooster = new List<int>() { 25, 3}; // veel hp minder damage
+				levelBooster = new List<int>() {7, 2}; // veel hp minder damage
 				break;
 			case "Elf":
-				levelBooster = new List<int>() { 10, 5}; // laag hp veel damage
+				levelBooster = new List<int>() { 5, 4}; // laag hp veel damage
 				break;
 			default:
 				levelBooster = new List<int>() { 30, 7};
@@ -62,7 +62,7 @@
 	{
         Console.Clear();
         PlayerChoices.Player.XP += EnemyDefeated.XP_To_Give; // voegt enemy xp to give aan de speler
-        int milestoneXP = 300 * PlayerChoices.Player.Level; // zet de benodigde xp voor het volgende level
+        int milestoneXP = 400 * PlayerChoices.Player.Level; // zet de benodigde xp voor het volgende level
         Console.WriteLine($"{EnemyDefeated.Name} is defeated! + {EnemyDefeated.XP_To_Give}XP / {milestoneXP}"); // vertelt hoeveel xp je nog nodig hebt
 
 		if (PlayerChoices.Player.XP >= milestoneXP) // als je over de milestoneXP zit dan ga je een level omhoog

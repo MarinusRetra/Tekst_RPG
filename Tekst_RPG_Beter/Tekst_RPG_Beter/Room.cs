@@ -48,8 +48,7 @@ public class Room
         return new Room(true, "!");
     }
     public List<Room> RandomRooms(List<Entity> Zone, int _enemyChance = 70)
-    { // maak een lijst aan rooms die de speler in kan stellen om eigen moeilijkheidsgraad aan te kunnen passes
-
+    {
         List<string> roomDescriptionsEncounter = new List<string> { };
         if (Zone == Zones.PrisonPeople)
         {
@@ -99,8 +98,9 @@ public class Room
         var room = Room.StartRoom();
         List<Room> InsertRooms = room.RandomRooms(Zones.PrisonPeople, 70);
 
-        foreach (Room kamer in InsertRooms)
+        for (int i = 0; i < InsertRooms.Count - 1; i++)
         {
+            var kamer = InsertRooms[i];
             if (kamer.Encounter)
             {
                 if (kamer.Enemy.Health > 0)
@@ -119,7 +119,9 @@ public class Room
                 Instelbaar.Print(kamer.roomDescription);
                 Console.ReadLine();
                 Room.PickEvent(Zones.PrisonPeople);
+
             }
+            InsertRooms.Remove(kamer);
         }
         Console.Clear();
         Instelbaar.Print("You hear heavy footsteps further down the hall");
@@ -128,17 +130,19 @@ public class Room
         Instelbaar.Print(Room.roomDescriptionsPrisonPeople.Last());
         Console.ReadLine();
         Combat.StartCombat(Zones.PrisonPeople.Last());
-        Instelbaar.Print("As you set foot outside outside the prison you find yourself standing in a lush forest.");
-
-
+        Instelbaar.Print("As you set foot outside outside the prison you find yourself in a lush forest.");
+        Console.ReadLine();
     }
+
+
     public static void GoThroughForestRooms()
     {
         var room = Room.StartRoom();
         List<Room> InsertRooms = room.RandomRooms(Zones.ForestPeople, 70);
 
-        foreach (Room kamer in InsertRooms)
+        for (int i = 0; i < InsertRooms.Count - 1; i++)
         {
+            var kamer = InsertRooms[i];
             if (kamer.Encounter)
             {
                 if (kamer.Enemy.Health > 0)
@@ -158,6 +162,7 @@ public class Room
                 Console.ReadLine();
                 Room.PickEvent(Zones.ForestPeople);
             }
+            InsertRooms.Remove(kamer);
         }
         Console.Clear();
         Instelbaar.Print("An elf warrior approaches");
@@ -166,7 +171,5 @@ public class Room
         Instelbaar.Print(Room.roomDescriptionsForestPeople.Last());
         Console.ReadLine();
         Combat.StartCombat(Zones.ForestPeople.Last());
-
-
     }
 }
