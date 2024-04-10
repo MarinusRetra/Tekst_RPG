@@ -19,27 +19,18 @@ public static class PlayerChoices
     public static void Selector(string function1, string function2, string function3, int cursorStart, Type insertType)
     {
     NoPrint:
+       
         if (Combat.Enemy != null)
         {
             Combat.ShowCombatStat(false);
         }
+        Console.SetCursorPosition(0, cursorStart);
+
         Console.CursorVisible = true;
         Instelbaar.Print(function1);
         Instelbaar.Print(function2);
         Instelbaar.Print(function3);
 
-        // 25 tot 32 is voor het verwijderen van spaties tussen de woorden van de input
-        // dit heb ik gedaan zodat ik meerdere woorden als optie aan de speler kan laten zien
-        // zonder_het_zoals_dit_te_moeten_schrijven,
-        // omdat de function1/2/3 strings worden gebruikt om een functie met dezelfde naam aan te roepen
-        string[] v = function1.Split(' ');
-        function1 = string.Join("", v);
-
-        string[] vl = function2.Split(' ');
-        function2 = string.Join("", vl);
-
-        string[] vla = function3.Split(' ');
-        function3 = string.Join("", vla);
 
 
         Console.WriteLine();
@@ -53,16 +44,10 @@ public static class PlayerChoices
         {
             ConsoleKey read = Console.ReadKey().Key;
             if (read != ConsoleKey.Enter && read != ConsoleKey.UpArrow && read != ConsoleKey.DownArrow)
-            {// reset als er een knop los van enter pijl omhoog of pijl omlaag ingedrukt wordt
+            {// reset de tekst als er niet enter uparrow of downarrow ingedrukt wordt
                 Console.Clear();
                 goto NoPrint;
             }
-
-
-            MethodInfo method1 = insertType.GetMethod(function1);// dit pakt de functie met dezelfde naam als de string paramater function 1
-            MethodInfo method2 = insertType.GetMethod(function2);// dit pakt ook de functie met dezelfde naam als de string paramater function 2
-            MethodInfo method3 = insertType.GetMethod(function3);// ik denk dat je kan raden wat deze lijn doet
-
 
             if (read == ConsoleKey.DownArrow && Console.CursorTop != Console.WindowHeight - 1)
             {
@@ -97,6 +82,23 @@ public static class PlayerChoices
             // roept de functie die als paramaters die zijn ingevoerd
             // en met Y van de cursor positie kiest hij welke van de drie geselecteerd is
             {
+                // 25 tot 32 is voor het verwijderen van spaties tussen de woorden van de input
+                // dit heb ik gedaan zodat ik meerdere woorden als optie aan de speler kan laten zien
+                // zonder_het_zoals_dit_te_moeten_schrijven,
+                // omdat de function1/2/3 strings worden gebruikt om een functie met dezelfde naam aan te roepen
+                string[] v = function1.Split(' ');
+                function1 = string.Join("", v);
+                
+                string[] vl = function2.Split(' ');
+                function2 = string.Join("", vl);
+                
+                string[] vla = function3.Split(' ');
+                function3 = string.Join("", vla);
+
+                MethodInfo method1 = insertType.GetMethod(function1);// dit pakt de functie met dezelfde naam als de string paramater function 1
+                MethodInfo method2 = insertType.GetMethod(function2);// dit pakt ook de functie met dezelfde naam als de string paramater function 2
+                MethodInfo method3 = insertType.GetMethod(function3);// ik denk dat je kan raden wat deze lijn doet
+
                 switch (trueSelected)// invoked de method op basis van welke string geselecteerd is
                 { // de if statements in de switch cases zijn voor specifieke functies die parameters doorgeven
                     case (0):

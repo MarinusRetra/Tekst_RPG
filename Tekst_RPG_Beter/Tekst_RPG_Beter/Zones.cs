@@ -16,10 +16,8 @@
     static Zones() 
     {
         //eerste paar enemies
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 70, 20, 2, "Surprised Guard"));// level 2 100 hp, 30 dmg en geeft 260 xp
+        StartEnemies.Add(new Entity("Samurai", "Men", 70, 20, 2, "Surprised Guard"));// level 2 100 hp, 30 dmg en geeft 260 xp
         StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 2, "Stupid Guard")); //level 2 70 hp, 30 damage en geeft 200 xp
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 60, 20, 2, "Clumsy Guard")) ; // level 2 90 hp, 30 damage en geeft 240 xp
-        StartEnemies.Add(new Entity("Gunslinger", "Orc", 60, 20, 3, "Intimidating Guard")); // level 3 105 hp, 35 damage en geeft 280 xp
 
         //eerste zone
         PrisonPeople.Add(new Entity("Fighter", "Orc", 150, 25, 2, "Spooked Guard"));  //1
@@ -28,7 +26,7 @@
         PrisonPeople.Add(new Entity("Samurai", "Elf", 130, 30, 3, "Elf Guard")); // 2
         Room.roomDescriptionsPrisonPeople.Add("You got lost and decide to ask for directions. As you aproach an elf wielding a sword you are quickly reminded to the fact that you're an escapee.");
 
-        PrisonPeople.Add(new Entity("Fighter", "Orc", 230, 20, 3, "Orc Guard")); // 3
+        PrisonPeople.Add(new Entity("Samurai", "Orc", 230, 20, 3, "Orc Guard")); // 3
         Room.roomDescriptionsPrisonPeople.Add("A nimble orc comes chasing after you.");
         
         PrisonPeople.Add(new Entity("Gunslinger", "Mens", 150, 40, 3, "Watchtower Guard")); // 4
@@ -37,10 +35,10 @@
         PrisonPeople.Add(new Entity("Fighter", "Mens", 160, 25, 4, "Unfazed Guard")); // 5
         Room.roomDescriptionsPrisonPeople.Add("While making your way through one of the prison blocks you sneak up on a guard wearing boxing gloves.");
 
-        PrisonPeople.Add(new Entity("Samurai", "Mens", 200, 25, 5, "Katana Wielding Guard")); // 6
+        PrisonPeople.Add(new Entity("Samurai", "Mens", 200, 22, 4, "Katana Wielding Guard")); // 6
         Room.roomDescriptionsPrisonPeople.Add("You peek around a corner and are greeted by a guard rapidly coming closer.");
 
-        PrisonPeople.Add(new Entity("Fighter", "Mens", 150, 25, 3, "Guard")); // 7
+        PrisonPeople.Add(new Entity("Samurai", "Mens", 150, 25, 3, "Guard")); // 7
         Room.roomDescriptionsPrisonPeople.Add("You've made your way into a darker area of the prison and are barely able to see, suddenly you feel someone bump into you.");
         
         PrisonPeople.Add(new Entity("Fighter", "Orc", 220, 15, 3, "Scared Guard")); // 8

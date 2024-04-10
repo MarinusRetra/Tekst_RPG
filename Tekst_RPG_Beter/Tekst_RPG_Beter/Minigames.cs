@@ -38,7 +38,7 @@ public static class Minigames
             Puzzel.Name = "Puzzel";
         }
 
-        Puzzel.XP_To_Give = 300 * PlayerChoices.Player.Level; // zet het xp wat de puzzel geeft op dezelfde waarde die speler nodig heeft om een level omhoog te gaan
+        Puzzel.XP_To_Give = 200 * PlayerChoices.Player.Level; // zet het xp wat de puzzel geeft op dezelfde waarde die speler nodig heeft om een level omhoog te gaan
         Console.CursorVisible = false;
         int pos1 = 0;
         int pos2 = 0;

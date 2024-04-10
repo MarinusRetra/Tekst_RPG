@@ -32,7 +32,7 @@ public static class Combat
         if (isPlayerTurn == true)
         {
             Player.Deflecting = false;
-            Console.Clear();
+            // Console.Clear();
             //ShowCombatStat(false);
             PlayerChoices.Selector("Attack", $"DrinkPotion[{Player.PotionAmount}]", "Use Skill", 0, typeof(Combat));
             if (Player.SkillCD > 0)
@@ -48,7 +48,7 @@ public static class Combat
         {
             Enemy.Deflecting = false;
 
-            select = random.Next(1, 3); // welke actie de enemy gaat doen op zijn beurt attack of guard
+            select = random.Next(1, 3); // welke actie de enemy gaat doen wordt hier gekozen
             
             if(Enemy.SkillCD == 0)// de enemy doet altijd zijn skill op het moment dat hij die krijgt
             {
@@ -58,17 +58,18 @@ public static class Combat
             switch (select)
             {
                 case 1:
-                    Attack(Enemy, Player);
+                    Attack(Enemy, Player, false);
                     break;
 
                 case 2:
-
-                    if (Enemy.PotionAmount > 0 && Enemy.Health > Enemy.maxHealth / 2)
+                    if (Enemy.PotionAmount > 0 && Enemy.Health < Enemy.maxHealth / 2)
                     {// drinkt alleen een potion als er nog potions zijn en als health minder is dan maxhealth / 2
                         DrinkPotion(Enemy);
                     }
                     else
-                        Attack(Enemy, Player);
+                    { 
+                        Attack(Enemy, Player, false);
+                    }
                 break;
 
                 case 3:
@@ -108,7 +109,6 @@ public static class Combat
             }
             Entity.CheckLevelUpAndSetNextMilestone(Enemy);
             Zones.FindList(Enemy, Zones.listList).Remove(Enemy);
-            Console.ReadLine();
         }
         if (Enemy.Health > 0 && Player.Health > 0)
         {
@@ -144,7 +144,7 @@ public static class Combat
                         ShowCombatStat();
                     break;
 
-                    // geeft 50% van je maximum health terug en je valt aan
+                    // geeft 1/3 van je maximum health terug en je valt aan
                     case "Samurai":
                         user.Health += user.maxHealth / 3;
                         user.SkillCD = 4;
@@ -159,7 +159,7 @@ public static class Combat
                     break;
                 }
             }
-            else
+            else //als deflect true is
             {
                 // pakt de enemy klass gebruikt de skill op de enemy met de enemy stats
                 switch (user.Klass) 
@@ -174,15 +174,16 @@ public static class Combat
                     break;
 
                     case "Samurai":
+                        Attack(user, user);
+                        target.Health += target.maxHealth / 3;
                         user.SkillCD = 4;
-                        user.Health -= user.maxHealth / 3;
-                        ShowCombatStat();
                     break;
 
                     case "Fighter":
                         user.SkillCD = 2;
                         target.SkillCD = 2;
-                        Console.WriteLine("Both of stand ready to counterattack. Nothing Happens");
+                        Console.WriteLine("Both of stand ready to counterattack. But no one moves");
+                        Thread.Sleep(1000);
                         ShowCombatStat();
                     break;
 
@@ -195,10 +196,10 @@ public static class Combat
          }
     }
 
-    public static void Attack(Entity user = null, Entity target = null, bool printStuff = true)
+    public static void Attack(Entity user = null, Entity target = null, bool dontPrintStuff = true)
     {
         Console.SetCursorPosition(0, 7);
-        Console.WriteLine(printStuff ? "" : $"{user.Name} valt aan met zijn {user.Klass} moves");
+        Console.WriteLine(dontPrintStuff ? "" : $"{user.Name} valt aan met zijn {user.Klass} moves");
         target.Health -= random.Next(user.Damage, user.Damage * 2);
         Thread.Sleep(1000);
         ShowCombatStat();

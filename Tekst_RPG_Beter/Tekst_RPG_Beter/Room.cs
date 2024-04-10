@@ -106,7 +106,7 @@ public class Room
                 if (kamer.Enemy.Health > 0)
                 {
                     Console.Clear();
-                    Instelbaar.Print(kamer.roomDescription);
+                    Instelbaar.Print($"{kamer.roomDescription} {i} ");
                     Console.ReadLine();
                     Combat.StartCombat(kamer.Enemy);
                 }
@@ -148,7 +148,7 @@ public class Room
                 if (kamer.Enemy.Health > 0)
                 {
                     Console.Clear();
-                    Instelbaar.Print(kamer.roomDescription);
+                    Instelbaar.Print($"{ kamer.roomDescription} {i} ");
                     Console.ReadLine();
                     Combat.StartCombat(kamer.Enemy);
                 }

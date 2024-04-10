@@ -61,16 +61,16 @@
 	public static void CheckLevelUpAndSetNextMilestone(Entity EnemyDefeated)
 	{
         Console.Clear();
+        int milestoneXP = PlayerChoices.Player.XP + 400 * PlayerChoices.Player.Level; // zet de benodigde xp voor het volgende level
         PlayerChoices.Player.XP += EnemyDefeated.XP_To_Give; // voegt enemy xp to give aan de speler
-        int milestoneXP = 400 * PlayerChoices.Player.Level; // zet de benodigde xp voor het volgende level
-        Console.WriteLine($"{EnemyDefeated.Name} is defeated! + {EnemyDefeated.XP_To_Give}XP / {milestoneXP}"); // vertelt hoeveel xp je nog nodig hebt
+        Console.WriteLine($"{EnemyDefeated.Name} is defeated!  currentXP: {PlayerChoices.Player.XP} XP / {milestoneXP}"); // vertelt hoeveel xp je nog nodig hebt
 
 		if (PlayerChoices.Player.XP >= milestoneXP) // als je over de milestoneXP zit dan ga je een level omhoog
 		{
 			PlayerChoices.Player.Level++;
-            PlayerChoices.Player.maxHealth += PlayerChoices.Player.levelBooster[0] * PlayerChoices.Player.Level;
-            PlayerChoices.Player.Damage += PlayerChoices.Player.levelBooster[1] * PlayerChoices.Player.Level;
-			// ^^ zet de damage en maxHealth naar levelbooster[0 voor health en 1 voor damage] * level 
+            PlayerChoices.Player.maxHealth = PlayerChoices.Player.maxHealth + PlayerChoices.Player.levelBooster[0] * PlayerChoices.Player.Level;
+            PlayerChoices.Player.Damage = PlayerChoices.Player.Damage + PlayerChoices.Player.levelBooster[1] * PlayerChoices.Player.Level;
+			// ^^ zet de damage en maxHealth naar levelbooster[0 voor health en 1 voor damage] * level + player damage of player maxhealth 
 
             Instelbaar.Print($"Level up! \nNew Level: {PlayerChoices.Player.Level} \nNew MaxHP: {PlayerChoices.Player.maxHealth} \nNew Damage: {PlayerChoices.Player.Damage}");
 			// print je nieuwe stats naar de console
