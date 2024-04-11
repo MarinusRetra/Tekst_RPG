@@ -1,7 +1,4 @@
-﻿using System;
-using Tekst_RPG_Beter;
-
-public class Instelbaar
+﻿public class Instelbaar
 {
     static int tekstSpeed = 5;
     static int difficulty;

@@ -1,7 +1,4 @@
-﻿using System;
-using Tekst_RPG_Beter;
-
-public static class Combat
+﻿public static class Combat
 {
     public static int Give_XP { get; set; }
 
@@ -211,7 +208,7 @@ public static class Combat
         {
             Console.SetCursorPosition(0, 7);
             Console.WriteLine($"{user.Name} drinks a potion");
-            user.Health += user.maxHealth / 2;
+            user.Health += user.maxHealth / 2 + 80;
             user.PotionAmount--;
             Thread.Sleep(1000);
             ShowCombatStat();

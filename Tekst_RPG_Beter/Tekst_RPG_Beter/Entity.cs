@@ -74,8 +74,10 @@
 
             Instelbaar.Print($"Level up! \nNew Level: {PlayerChoices.Player.Level} \nNew MaxHP: {PlayerChoices.Player.maxHealth} \nNew Damage: {PlayerChoices.Player.Damage}");
 			// print je nieuwe stats naar de console
+            Console.CursorVisible = true;
 			Console.ReadLine();
-		}
+
+        }
     }
 
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Numerics;
-
+﻿using System.Numerics;
 public static class Minigames
 {
     static Random rand = new Random();

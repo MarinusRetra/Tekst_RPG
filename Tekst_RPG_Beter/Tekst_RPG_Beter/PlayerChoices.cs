@@ -1,10 +1,7 @@
 ﻿using System.Reflection;
-using Tekst_RPG_Beter;
-using System;
-
 public static class PlayerChoices
 {
-    public static Entity Player = new Entity("", "", 150, 35, 0, "");
+    public static Entity Player = new Entity("", "", 160, 38, 0, "");
     public static bool menu = true;
 
     /// <summary>
@@ -26,7 +23,6 @@ public static class PlayerChoices
         }
         Console.SetCursorPosition(0, cursorStart);
 
-        Console.CursorVisible = true;
         Instelbaar.Print(function1);
         Instelbaar.Print(function2);
         Instelbaar.Print(function3);
@@ -42,6 +38,7 @@ public static class PlayerChoices
 
         while (menu == true)
         {
+            Console.CursorVisible = true;
             ConsoleKey read = Console.ReadKey().Key;
             if (read != ConsoleKey.Enter && read != ConsoleKey.UpArrow && read != ConsoleKey.DownArrow)
             {// reset de tekst als er niet enter uparrow of downarrow ingedrukt wordt
