@@ -78,8 +78,8 @@
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 400, 35, 8, "Advanced Elf Archer")); // 9
         Room.roomDescriptionsForestPeople.Add("Its getting dark and you cannot see much, however you quickly discover that there's someone that can see you.");
        
-        ForestPeople.Add(new Entity("Gunslinger", "Mens", 400, 32, 12, "Wandering Ronin")); // 10
-        Room.roomDescriptionsForestPeople.Add("You finally see an end to this forest, your joy fades quickly however when you realize you've been ambushed by a wandereing ronin.");
+        ForestPeople.Add(new Entity("Samurai", "Mens", 400, 32, 12, "Wandering Ronin")); // 10
+        Room.roomDescriptionsForestPeople.Add("You finally see an end to this forest, your joy is short lived however, as you realize you've been ambushed by a wandereing ronin.");
 
 
         foreach (Entity entity in ForestPeople)
