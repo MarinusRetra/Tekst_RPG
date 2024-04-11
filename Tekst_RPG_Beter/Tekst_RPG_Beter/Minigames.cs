@@ -31,14 +31,14 @@ public static class Minigames
         Entity Puzzel = new Entity();
         if (gameSelected != "Schuif")
         {
-            Puzzel.Name = "Je Tegenstander";
+            Puzzel.Name = "Your opponent";
         }
         else
         {
-            Puzzel.Name = "Puzzel";
+            Puzzel.Name = "Puzzle";
         }
 
-        Puzzel.XP_To_Give = 200 * PlayerChoices.Player.Level; // zet het xp wat de puzzel geeft op dezelfde waarde die speler nodig heeft om een level omhoog te gaan
+        Puzzel.XP_To_Give = 400 * PlayerChoices.Player.Level; // zet het xp wat de puzzel geeft op dezelfde waarde die speler nodig heeft om een level omhoog te gaan
         Console.CursorVisible = false;
         int pos1 = 0;
         int pos2 = 0;
@@ -156,7 +156,7 @@ public static class Minigames
                     Console.Write($" {pos1},{pos2}");
                     if (HasPlayerWon('X', speelBord))
                     {
-                        Console.WriteLine("Puzzel opgelost!");
+                        Console.WriteLine(" Puzzle solved!");
                         Thread.Sleep(1000);
                         i = 4;
                         j = 4;
@@ -174,7 +174,7 @@ public static class Minigames
             { 
                 if (HasPlayerWon('X', speelBord))
                 {
-                    Console.WriteLine("Je hebt gewonnen!");
+                    Console.WriteLine(" You won!");
                     Thread.Sleep(1000);
                     i = 4;
                     j = 4;
@@ -184,7 +184,7 @@ public static class Minigames
                 }
                 else if (FullBoard(speelBord))
                 {
-                    Console.WriteLine(" Bord is vol niemand wint");
+                    Console.WriteLine(" Board filled no winners");
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;
@@ -195,7 +195,7 @@ public static class Minigames
                 if (HasPlayerWon('Y', speelBord))
                 {
 
-                    Console.WriteLine(" Je hebt verloren");
+                    Console.WriteLine(" You lost");
                     Thread.Sleep(2000);
                     i = 4;
                     j = 4;

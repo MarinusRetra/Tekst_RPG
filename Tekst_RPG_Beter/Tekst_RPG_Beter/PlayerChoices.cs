@@ -4,7 +4,7 @@ using System;
 
 public static class PlayerChoices
 {
-    public static Entity Player = new Entity("", "", 150, 30, 0, "");
+    public static Entity Player = new Entity("", "", 150, 35, 0, "");
     public static bool menu = true;
 
     /// <summary>
@@ -142,7 +142,7 @@ public static class PlayerChoices
         Console.Clear();
         Instelbaar.Print($"This is the story of: ",false);
         Player.Name = Console.ReadLine();
-        Player.Name = string.IsNullOrEmpty(Player.Name) ? "Nameless Warrior" : Player.Name;
+        Player.Name = string.IsNullOrEmpty(Player.Name) ? "Nameless Prisoner" : Player.Name;// je naam wordt nameless prisoner als je geen naam kiest
 
         Instelbaar.Print($"{Player.Name} is an");
         Console.WriteLine();
@@ -188,7 +188,7 @@ public static class PlayerChoices
     public static void Enterthetunnel()// eerste player keuze
     {
         Console.Clear();
-        Instelbaar.Print("You crawl through the small hole in the ground and end up in the middle of the hallway between cells. A guard saw you escape and is rapidly approuching you!.");
+        Instelbaar.Print("You crawl through the small hole in the ground and end up in the middle of the hallway between cells. A guard saw you escape and is rapidly approuching you!");
         Console.ReadLine();
         Combat.StartCombat(Zones.StartEnemies[0]);
     }

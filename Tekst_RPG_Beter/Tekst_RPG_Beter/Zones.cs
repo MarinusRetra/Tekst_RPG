@@ -16,8 +16,8 @@
     static Zones() 
     {
         //eerste paar enemies
-        StartEnemies.Add(new Entity("Samurai", "Men", 70, 20, 2, "Surprised Guard"));// level 2 100 hp, 30 dmg en geeft 260 xp
-        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 2, "Stupid Guard")); //level 2 70 hp, 30 damage en geeft 200 xp
+        StartEnemies.Add(new Entity("Samurai", "Men", 70, 20, 2, "Surprised Guard"));// 1
+        StartEnemies.Add(new Entity("Gunslinger", "Mens", 40, 20, 2, "Stupid Guard")); // 2
 
         //eerste zone
         PrisonPeople.Add(new Entity("Fighter", "Orc", 150, 25, 2, "Spooked Guard"));  //1
@@ -43,14 +43,16 @@
         
         PrisonPeople.Add(new Entity("Fighter", "Orc", 220, 15, 3, "Scared Guard")); // 8
         Room.roomDescriptionsPrisonPeople.Add("You have found yourself in the guard's lounge where an orc is reading 'What to do in case of an escape attempt for dummies'.");
+       
         PrisonPeople.Add(new Entity("Gunslinger", "Elf", 160, 30, 4, "Elf Guard")); // 9
         Room.roomDescriptionsPrisonPeople.Add("You see a guard standing guard at the contraband desk, even though the room is locked and no one can get in, despite this the guard looks quite serious.");
+       
         PrisonPeople.Add(new Entity("Fighter", "Orc", 450, 40, 8, "The Warden")); // 10
         Room.roomDescriptionsPrisonPeople.Add("The exit!                \nOne problem the warden seems to be blocking your way through. He is the only thing standing between you and the outside world.");
 
         
         //tweede zone
-        ForestPeople.Add(new Entity("Gunslinger", "Elf", 330, 40, 8, "Elf Archer")); // 1
+        ForestPeople.Add(new Entity("Gunslinger", "Elf", 330, 40, 6, "Elf Archer")); // 1
         Room.roomDescriptionsForestPeople.Add("While exploring the forest you are ambushed by an elf.");
 
         ForestPeople.Add(new Entity("Gunslinger", "Elf", 320, 40, 8, "Elf Archer")); // 2
@@ -70,11 +72,12 @@
         ForestPeople.Add(new Entity("Samurai", "Orc", 330, 60, 9, "Elf Wielding Orc")); // 7
         Room.roomDescriptionsForestPeople.Add("An enraged orc charges you wielding an elf.");
 
-        ForestPeople.Add(new Entity("Gunslinger", "Elf", 400, 50, 11, "Advanced Elf Archer")); // 8
+        ForestPeople.Add(new Entity("Gunslinger", "Elf", 400, 45, 8, "Advanced Elf Archer")); // 8
         Room.roomDescriptionsForestPeople.Add("While trying to exit this maze of a forest an elf jumps at you from the bushes!");
 
-        ForestPeople.Add(new Entity("Gunslinger", "Elf", 400, 50, 11, "Advanced Elf Archer")); // 9
+        ForestPeople.Add(new Entity("Gunslinger", "Elf", 400, 45, 8, "Advanced Elf Archer")); // 9
         Room.roomDescriptionsForestPeople.Add("Its getting dark and you cannot see much, however you quickly discover that there's someone that can see you.");
+       
         ForestPeople.Add(new Entity("Gunslinger", "Mens", 600, 50, 15, "Wandering Ronin")); // 10
         Room.roomDescriptionsForestPeople.Add("You finally see an end to this forest, your joy fades quickly however when you realize you've been ambushed by a wandereing ronin.");
 

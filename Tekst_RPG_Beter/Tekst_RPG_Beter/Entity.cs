@@ -68,12 +68,13 @@
 		if (PlayerChoices.Player.XP >= milestoneXP) // als je over de milestoneXP zit dan ga je een level omhoog
 		{
 			PlayerChoices.Player.Level++;
-            PlayerChoices.Player.maxHealth = PlayerChoices.Player.maxHealth + PlayerChoices.Player.levelBooster[0] * PlayerChoices.Player.Level;
-            PlayerChoices.Player.Damage = PlayerChoices.Player.Damage + PlayerChoices.Player.levelBooster[1] * PlayerChoices.Player.Level;
+			PlayerChoices.Player.maxHealth = PlayerChoices.Player.maxHealth + PlayerChoices.Player.levelBooster[0];
+			PlayerChoices.Player.Damage = PlayerChoices.Player.Damage + PlayerChoices.Player.levelBooster[1];
 			// ^^ zet de damage en maxHealth naar levelbooster[0 voor health en 1 voor damage] * level + player damage of player maxhealth 
 
             Instelbaar.Print($"Level up! \nNew Level: {PlayerChoices.Player.Level} \nNew MaxHP: {PlayerChoices.Player.maxHealth} \nNew Damage: {PlayerChoices.Player.Damage}");
 			// print je nieuwe stats naar de console
+			Console.ReadLine();
 		}
     }
 

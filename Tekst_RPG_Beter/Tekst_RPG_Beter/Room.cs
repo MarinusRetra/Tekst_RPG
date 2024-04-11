@@ -49,6 +49,7 @@ public class Room
     }
     public List<Room> RandomRooms(List<Entity> Zone, int _enemyChance = 70)
     {
+        var newZone = new List<Entity>(Zone);
         List<string> roomDescriptionsEncounter = new List<string> { };
         if (Zone == Zones.PrisonPeople)
         {
@@ -59,11 +60,9 @@ public class Room
             roomDescriptionsEncounter = roomDescriptionsForestPeople;
         }
 
-
-
         List<Room> RoomsList = new List<Room>();
 
-        for (int i = 0; i <= Zone.Count - 1; i++) // deze loop loopt nog 1 keer ookal wordt er geen entity meer gezet aan kamer.Enemy,
+        for (int i = 0; i <= newZone.Count - 1; i++) // deze loop loopt nog 1 keer ookal wordt er geen entity meer gezet aan kamer.Enemy,
                                                   // want de laatste element wordt nooit gepakt in de eerste if statement
         {
             int RandomGetal = random.Next(1, 101);
@@ -71,19 +70,32 @@ public class Room
             if (RandomGetal < _enemyChance)// als RandomGetal lager is dan 70 gebeurt dit
             {
                 kamer.Encounter = true;
-                kamer.Enemy = Zone.ElementAt(random.Next(0, Zone.Count - 1));//pakt een random entity uit de list. kan alles pakken behalve de laatste van de list
-                kamer.roomDescription = roomDescriptionsEncounter.ElementAt(Zone.IndexOf(kamer.Enemy));// pakt de description van EncounterDescList op hetzelfde element als het gepakte element van de Zone list
+                kamer.Enemy = newZone.ElementAt(random.Next(0, newZone.Count - 1));//pakt een random entity uit de list. kan alles pakken behalve de laatste van de list
+                kamer.roomDescription = roomDescriptionsEncounter.ElementAt(newZone.IndexOf(kamer.Enemy));// pakt de description van EncounterDescList op hetzelfde element als het gepakte element van de Zone list
+                roomDescriptionsEncounter.RemoveAt(newZone.IndexOf(kamer.Enemy));
+                newZone.Remove(kamer.Enemy);// zorgt dat je niet twee keer dezelfde kamer in de list kan krijgen
             }
             else
             {
                 kamer.Encounter = false;
                 if (Zone == Zones.PrisonPeople)
-                {
+                { 
                     kamer.roomDescription = roomDescriptionsSafePrison[random.Next(0, roomDescriptionsSafePrison.Count)];
-
+                    if (roomDescriptionsSafePrison.Count <= 1)
+                    {
+                       // zorgt dat je alleen twee keer dezelfde puzzel description kan krijgen als je door alle andere descriptions heen bent gegaan
+                        roomDescriptionsSafePrison.Remove(kamer.roomDescription);
+                    }
                 }
                 else
-                    kamer.roomDescription = roomDescriptionsSafeForest[random.Next(0, roomDescriptionsSafeForest.Count)];
+                { 
+                   kamer.roomDescription = roomDescriptionsSafeForest[random.Next(0, roomDescriptionsSafeForest.Count)];
+                   if (roomDescriptionsSafeForest.Count <= 1)
+                   {
+                        // zorgt dat je alleen twee keer dezelfde puzzel description kan krijgen als je door alle andere descriptions heen bent gegaan
+                       roomDescriptionsSafeForest.Remove(kamer.roomDescription);
+                   }
+                }
 
             }
             RoomsList.Add(kamer);
@@ -98,7 +110,7 @@ public class Room
         var room = Room.StartRoom();
         List<Room> InsertRooms = room.RandomRooms(Zones.PrisonPeople, 70);
 
-        for (int i = 0; i < InsertRooms.Count - 1; i++)
+        for (int i = InsertRooms.Count-1; InsertRooms.Count >= 1; i--)
         {
             var kamer = InsertRooms[i];
             if (kamer.Encounter)
@@ -111,7 +123,9 @@ public class Room
                     Combat.StartCombat(kamer.Enemy);
                 }
                 else
-                    continue;
+                {
+                    throw new Exception("Je hebt meerderkeren dezelfde enemy gekregen in je kamer");
+                }
             }
             else
             {
@@ -140,7 +154,7 @@ public class Room
         var room = Room.StartRoom();
         List<Room> InsertRooms = room.RandomRooms(Zones.ForestPeople, 70);
 
-        for (int i = 0; i < InsertRooms.Count - 1; i++)
+        for (int i = InsertRooms.Count - 1; InsertRooms.Count >= 1; i--)
         {
             var kamer = InsertRooms[i];
             if (kamer.Encounter)
@@ -148,12 +162,14 @@ public class Room
                 if (kamer.Enemy.Health > 0)
                 {
                     Console.Clear();
-                    Instelbaar.Print($"{ kamer.roomDescription} {i} ");
+                    Instelbaar.Print($"{kamer.roomDescription} {i} ");
                     Console.ReadLine();
                     Combat.StartCombat(kamer.Enemy);
                 }
                 else
-                    continue;
+                {
+                    throw new Exception("Je hebt meerderkeren dezelfde enemy gekregen in je kamer");
+                }
             }
             else
             {

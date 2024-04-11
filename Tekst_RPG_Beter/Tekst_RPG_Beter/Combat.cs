@@ -146,7 +146,7 @@ public static class Combat
 
                     // geeft 1/3 van je maximum health terug en je valt aan
                     case "Samurai":
-                        user.Health += user.maxHealth / 3;
+                        user.Health += user.maxHealth / 4;
                         user.SkillCD = 4;
                         Attack(user, target);
                     break;
@@ -175,7 +175,7 @@ public static class Combat
 
                     case "Samurai":
                         Attack(user, user);
-                        target.Health += target.maxHealth / 3;
+                        target.Health += target.maxHealth / 4;
                         user.SkillCD = 4;
                     break;
 
