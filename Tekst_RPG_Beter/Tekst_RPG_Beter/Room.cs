@@ -6,8 +6,8 @@
 
     static Random random = new Random();
 
-    public List<string> roomDescriptionsSafePrison = new List<string>() { "While making your way through the prison you see a small puzzle engraved on one of the walls.", "While waiting for some guards to pass. you see a small puzzle on the floor, you decide to your hand at solving it. ", "You search one of the lockers in the guards changing area. In one of the lockers lies a small puzzle" };
-    public List<string> roomDescriptionsSafeForest = new List<string>() { "You run into a an old couple playing board games in their backyard. They seem friendly, you decide to join them for a game", "A magical board is engraved inside the trunk of a tree, it looks like a game.", "An old automaton used for playing board games lies dormant against a tree, You try to play it for a game" };
+    List<string> roomDescriptionsSafePrison = new List<string>() { "While making your way through the prison you see a small puzzle engraved on one of the walls.", "While waiting for some guards to pass. you see a small puzzle on the floor, you decide to your hand at solving it. ", "You search one of the lockers in the guards changing area. In one of the lockers lies a small puzzle" };
+    List<string> roomDescriptionsSafeForest = new List<string>() { "You run into a an old couple playing board games in their backyard. They seem friendly, you decide to join them for a game", "A magical board is engraved inside the trunk of a tree, it looks like a game.", "An old automaton used for playing board games lies dormant against a tree, You try to play it for a game" };
 
     public static List<string> roomDescriptionsPrisonPeople = new List<string>() { };
     public static List<string> roomDescriptionsForestPeople = new List<string>() { };

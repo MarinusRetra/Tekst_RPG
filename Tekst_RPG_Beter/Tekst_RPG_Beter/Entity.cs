@@ -2,7 +2,6 @@
 {
 
 	private int health;
-	static Random ran = new Random();
 
     public int maxHealth;
 	public bool Deflecting { get; set; }

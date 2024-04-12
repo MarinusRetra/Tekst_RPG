@@ -1,7 +1,5 @@
 ﻿public static class Combat
 {
-    public static int Give_XP { get; set; }
-
     static Random random = new Random();
 
     public static Entity Enemy;
@@ -193,7 +191,7 @@
          }
     }
 
-    public static void Attack(Entity user = null, Entity target = null, bool dontPrintStuff = true)
+    public static void Attack(Entity user, Entity target, bool dontPrintStuff = true)
     {
         Console.SetCursorPosition(0, 7);
         Console.WriteLine(dontPrintStuff ? "" : $"{user.Name} valt aan met zijn {user.Klass} moves");
