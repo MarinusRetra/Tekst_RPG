@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "teh3D8HZjOuAjD4I0Efpx+uNuNjn+WUJa1Oip7EJJ6kcZbSoHAR6uaE9A0ltL2TSXiyLidT+Urpa+8MUJ6FSsA==",
+  "dgSpecHash": "JZ9HWI3W3U16jyeEcWU7OhZAJLtjWJ31IgFOsEg7BSNgbEDoLVKK/BDaaqqhYSPRi6H6r1urEIP5O0PDMBH3tw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\marin\\Desktop\\Projecten\\Jaar 2\\C#\\Tekst-RPG\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\marin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\marin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\marin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\marin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.28\\microsoft.netcore.app.host.win-x64.6.0.28.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\marin\\OneDrive\\Desktop\\Projecten\\C#\\TekstRpg\\Tekst_RPG\\Tekst_RPG_Beter\\Tekst_RPG_Beter\\Tekst_RPG_Beter.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
