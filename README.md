@@ -1,5 +1,7 @@
+JE HOEFT ALLEEN DE Tekst_Rpg_Game FOLDER TE DOWLOADEN OM TE KUNNEN SPELEN
+
 Dit bestand legt uit hoe game werkt 
-Als je blind wil spelen negeer dit, maar ik raad aan dat je het leest.
+Als je blind wil spelen negeer dit, maar ik raad nieuwe spelers sterk aan dat dit toch te lezen.
 
 Aan het begin kies je een race en een klass. De race bepaalt hoeveel hp en damage je erbij krijgt bij elke level omhoog en de klass bepaalt welke skill je krijgt
 
@@ -39,5 +41,9 @@ Er zijn twee soorten non-combat encounters
 Als je een non-combat encounter haalt dan krijg je de exacte hoeveelheid xp die je nodig hebt om level omhoog te gaan, als je de non-combat encounter vaalt gaa je gewoon naar
 de volgende kamer.
 
-De non-combat encounters zijn niet gegarandeerd te verschijne elke kamer in elke zone heeft een 30% kans om een non-combat encounter te zijn, 
-dus als je pech heb kan het zijn dat je de non-combat encounters niet tegenkomt
+De non-combat encounters zijn niet gegarandeerd om te verschijnen elke kamer in elke zone heeft een 30% kans om een non-combat encounter te zijn, 
+dus als je pech heb kan het zijn dat je de non-combat encounters helemaal niet tegenkomt.
+
+
+
+
