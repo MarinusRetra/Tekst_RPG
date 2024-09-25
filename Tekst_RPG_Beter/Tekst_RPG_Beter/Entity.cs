@@ -1,6 +1,5 @@
 ﻿public class Entity
 {
-
 	private int health;
 
     public int maxHealth;
