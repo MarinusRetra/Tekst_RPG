@@ -1,7 +1,7 @@
 JE HOEFT ALLEEN DE Tekst_Rpg_Game FOLDER TE DOWLOADEN OM TE KUNNEN SPELEN
 
-Dit bestand legt uit hoe game werkt 
-Als je blind wil spelen negeer dit, maar ik raad nieuwe spelers sterk aan dat dit toch te lezen.
+Dit bestand legt uit hoe het spel werkt. 
+Als je blind wil spelen negeer dit, maar ik raad je nogsteeds sterk aan dat dit door te lezen.
 
 Aan het begin kies je een race en een klass. De race bepaalt hoeveel hp en damage je erbij krijgt bij elke level omhoog en de klass bepaalt welke skill je krijgt
 
